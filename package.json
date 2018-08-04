@@ -14,6 +14,7 @@
     "d3-time-format": "^2.1.1",
     "drrr": "^0.0.1",
     "react": "^16.3.2",
+    "react-d3-basic": "^1.6.11",
     "react-dom": "^16.3.2",
     "react-scripts": "1.1.4",
     "react-simple-maps": "^0.12.1",
