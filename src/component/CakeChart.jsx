@@ -1,10 +1,6 @@
 import React from 'react';
 import { scaleOrdinal } from 'd3-scale';
 import { arc as d3Arc, pie as d3Pie } from 'd3-shape';
-import { csvParse } from 'd3-dsv';
-
-// Same as data.csv
-import dataCsv from './data';
 
 import './chart.css';
 
@@ -25,25 +21,20 @@ const arc = d3Arc()
 const pie = d3Pie()
   .sort(null)
   .value(function(d) {
-    return d.population;
+    return d.count;
   });
 
-const data = pie(
-  csvParse(dataCsv, d => {
-    d.population = +d.population;
-    return d;
-  })
-);
+export default ({data}) => {
+  const pieData = pie(data);
 
-export default () => {
   return (
     <svg width={width} height={height}>
       <g transform={`translate(${width / 2}, ${height / 2})`}>
-        {data.map(d => (
-          <g className="arc" key={`a${d.data.age}`}>
-            <path d={arc(d)} fill={color(d.data.age)} />
+        {pieData.map(d => (
+          <g className="arc" key={`a${d.data.paw}`}>
+            <path d={arc(d)} fill={color(d.data.paw)} />
             <text transform={`translate(${arc.centroid(d)})`} dy=".35em">
-              {d.data.age}
+              {d.data.paw}
             </text>
           </g>
         ))}
