@@ -4,7 +4,6 @@ import { DropdownButton } from 'react-bootstrap';
 import logo from '../../assets/logo.png';
 
 import './styles.css';
-import HomeButton from '../HomeButton';
 import LogInTab from '../LogInTab';
 import SignUpTab from '../SignUpTap';
 
