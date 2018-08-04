@@ -13,18 +13,14 @@ const width = 960,
   radius = Math.min(width, height) / 2;
 
 const color = scaleOrdinal().range([
-  '#98abc5',
-  '#8a89a6',
-  '#7b6888',
-  '#6b486b',
-  '#a05d56',
-  '#d0743c',
-  '#ff8c00',
+  '#fcd77f',
+  '#ff2e4c',
+  '#2e99b0',
 ]);
 
 const arc = d3Arc()
   .outerRadius(radius - 10)
-  .innerRadius(radius - 70);
+  .innerRadius(radius - 95);
 
 const pie = d3Pie()
   .sort(null)
