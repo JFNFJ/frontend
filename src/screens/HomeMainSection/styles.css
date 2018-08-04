@@ -1,0 +1,21 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.home-title {
+  color: #17c2ba;
+  margin-top: 150px;
+  font-size: 45px; 
+}
+
+.home-main-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-subtitle {
+  margin-top: 20px;
+  color: grey;
+}
