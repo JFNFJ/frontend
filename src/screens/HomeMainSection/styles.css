@@ -14,14 +14,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.home-main-section::after {
-  content: '';
-  background-image: url('../../assets/ovillo.png');
+  background-image: url('../../assets/ovillo-trans-2.png');
   background-repeat: no-repeat;
   background-position: left bottom;
-  opacity: 0.5;
+  background-position-y: 100px;
+  height: 90vh;
+  background-size: auto 600px; 
 }
 
 .home-subtitle {
