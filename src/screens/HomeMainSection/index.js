@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './styles.css';
 
 import HomeDescription from '../HomeDescription';
+import Charts from '../Charts';
 
 function HomeMainSection () {
     return(
@@ -12,6 +13,7 @@ function HomeMainSection () {
             <span className="home-subtitle">Descubrí lo que piensa el mundo con tan sólo un click</span>
             <HomeDescription />
         </div>
+        <Charts/>
       </div>
     );
 }
