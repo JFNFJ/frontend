@@ -1,0 +1,45 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  background-color: #17c2ba;
+}
+
+.logo {
+  width: auto;
+  height: 50px;
+  margin-left: 30px;
+}
+
+.header-title {
+  margin-left: 30px;
+  color: white;
+  font-size: 20px;
+}
+
+.header-buttons {
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.header-button {
+  color: #17c2ba;
+  margin: 5px;
+  border: 0;
+  padding: 10px;
+  border-radius: 5px; 
+  background-color: white;
+  font-family: 'Roboto', sans-serif;
+}
+.header-button:hover {
+  color: white;
+  background-color: #17c2ba;
+  border: 2px solid white;
+  padding: 8px;
+}

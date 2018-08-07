@@ -1,7 +1,7 @@
 import React from 'react';
-import CakeChart from '../component/CakeChart';
-import MapChart from '../component/MapChart';
-import DateChart from '../component/DateChart';
+import CakeChart from '../../component/CakeChart';
+import MapChart from '../../component/MapChart';
+import DateChart from '../../component/DateChart';
 
 const CakeData = { for: 2704659, no: 1159981, against: 4499890 };
 
