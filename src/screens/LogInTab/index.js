@@ -14,6 +14,7 @@ function LogInTab () {
           <input className="login-input-field" type="password" name="name" />
         </label>
         <input className="login-button" type="submit" value="Ingresar" />
+        <a className="login-href" href="www.google.com">¿Olvido su contraseña?</a>
       </div>
     );
 }

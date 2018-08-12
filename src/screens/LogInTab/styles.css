@@ -31,3 +31,16 @@
   padding: 5px;
   margin: 5px;
 }
+
+.login-href {
+  text-align: center;
+  color: #17c2ba;
+}
+
+.login-href:hover {
+  color: #17c2ba;
+}
+
+.login-href:visited {
+  color: #17c2ba;
+}
