@@ -32,7 +32,7 @@ const popScale = scaleLinear()
   .range(colors());
 
 const colorFor = (data) => {
-  return (1* data['for'] + (-1) * data.against + 0 * data.no) / (data['for'] + data.against + data.no);
+  return data.overall();
 }
 
 export default class MapChart extends Component {
@@ -59,7 +59,7 @@ export default class MapChart extends Component {
       x: x,
       y: y,
       location: geography.properties.name,
-      value: this.renderTooltip(this.props.data[geography.properties.wb_a2])
+      value: this.renderTooltip(this.props.data.find(x => x.k === geography.properties.wb_a2))
     });
   }
 
@@ -68,11 +68,11 @@ export default class MapChart extends Component {
   }
 
   style(loc) {
-    const data = this.props.data[loc];
+    const data = this.props.data.find(x => x.k === loc)
     if(data) {
       return {
         default: {
-          fill: popScale(colorFor(data)),
+          fill: popScale(colorFor(data.v)),
           stroke: "#607D8B",
           strokeWidth: 0.75,
           outline: "none",
