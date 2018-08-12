@@ -3,13 +3,14 @@ import './styles.css';
 
 
 import MainHeader from '../MainHeader';
+import SocialCatMainSection from '../SocialCatMainSection'
 
 class SocialCatHome extends Component {
   render() {
     return (
       <div className="Home">
         <MainHeader setUpHeader={false}/>
-        <span>holis</span>
+        <SocialCatMainSection />
       </div>
     );
   }
