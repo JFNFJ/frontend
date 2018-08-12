@@ -21,7 +21,7 @@ function SignUpTab () {
           Confirmar:
           <input className="login-input-field" type="password" name="name" />
         </label>
-        <input className="login-button" type="submit" value="Registrar" />
+        <input className="sign-button" type="submit" value="Registrar" />
       </div>
     );
 }
