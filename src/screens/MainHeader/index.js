@@ -11,7 +11,10 @@ class MainHeader extends Component {
   render() {
     return(
       <div className="header">
-        <img src={logo} alt="cat" className="logo"></img>
+        {this.props.setUpHeader ?
+          <img src={logo} alt="cat" className="logo"></img> 
+          : <img src={logo} alt="cat" className="logo"></img> 
+        }
         <span className="header-title">Social Cat</span>
         {this.props.setUpHeader ?
           <div className="header-buttons">

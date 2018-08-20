@@ -8,7 +8,6 @@ class SocialCatMainSection extends Component {
     render() {
       return (
         <div className="social-cat-main-section">
-          <SocialCatDashboard/>
           <SocialCatDataSection />
         </div>
       );

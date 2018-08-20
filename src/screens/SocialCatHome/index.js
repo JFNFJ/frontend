@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './styles.css';
 
-
 import MainHeader from '../MainHeader';
 import SocialCatMainSection from '../SocialCatMainSection'
 
