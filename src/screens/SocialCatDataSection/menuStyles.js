@@ -1,9 +1,9 @@
 var menuStyles = {
     bmBurgerButton: {
       position: 'fixed',
-      width: '70px',
+      width: '72px',
       height: '50px',
-      left: '36px',
+      left: '30px',
       top: '5px'
     },
     bmBurgerBars: {

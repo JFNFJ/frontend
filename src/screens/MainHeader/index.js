@@ -13,7 +13,7 @@ class MainHeader extends Component {
       <div className="header">
         {this.props.setUpHeader ?
           <img src={logo} alt="cat" className="logo"></img> 
-          : <img src={logo} alt="cat" className="logo"></img> 
+          : <div alt="cat" className="logo-blank"></div> 
         }
         <span className="header-title">Social Cat</span>
         {this.props.setUpHeader ?
