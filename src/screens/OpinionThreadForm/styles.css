@@ -57,3 +57,12 @@
 .ot-name-label-input:focus {
     outline-width: 0;
 }
+
+.ot-button {
+    background-color: #17c2ba;
+    color: white;
+    border-radius: 5px;
+    border: 0;
+    padding: 5px;
+    margin: 5px;
+  }

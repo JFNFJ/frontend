@@ -25,7 +25,7 @@ class OpinionThreadForm extends Component {
                 Topico:
                 <input className="ot-name-label-input" type="text" name="name" />
               </label>
-              <input className="sign-button" type="submit" value="Crear" />
+              <input className="ot-button" type="submit" value="Crear" />
             </div>}
         </div>
       );
