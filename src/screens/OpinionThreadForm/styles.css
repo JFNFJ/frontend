@@ -1,0 +1,9 @@
+.opinion-thread-form {
+  display: flex;
+  flex-direction: row;
+  width: 200px;
+  height: 100px;
+  background-color: white;
+  align-self: center;
+  box-shadow: 0 4px 8px 0 rgba(23, 194, 186, 1), 0 6px 20px 0 rgba(23, 194, 186, 1);
+}

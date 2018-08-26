@@ -4,6 +4,8 @@ import './styles.css';
 import logo from '../../assets/logo.png';
 import menuStyles from './menuStyles';
 
+import OpinionThreadSection from '../OpinionThreadSection';
+
 class SocialCatDataSection extends Component {
   render() {
       const MenuSettings = {
@@ -20,6 +22,7 @@ class SocialCatDataSection extends Component {
               <a id="home" className="menu-item" href="/">Home</a>
             </div>
           </Menu>
+          <OpinionThreadSection />
         </div>
       );
     }
