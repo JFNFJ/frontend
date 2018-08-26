@@ -30,4 +30,19 @@
   border: 0;
   padding: 5px;
   margin: 5px;
+  width: 90px;
+}
+
+.login-href {
+  text-align: center;
+  padding-left: 15px;
+  color: #17c2ba;
+}
+
+.login-href:hover {
+  color: #17c2ba;
+}
+
+.login-href:visited {
+  color: #17c2ba;
 }

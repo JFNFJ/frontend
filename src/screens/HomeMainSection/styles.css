@@ -16,10 +16,9 @@
   align-items: center;
   background-image: url('../../assets/ovillo-trans.png');
   background-repeat: no-repeat;
-  background-position: left bottom;
-  background-position-y: 100px;
-  height: 90vh;
-  background-size: auto 600px; 
+  background-position: left 20px bottom -20vh;
+  height: calc(100vh - 60px);
+  background-size: auto 50vw; 
 }
 
 .home-subtitle {

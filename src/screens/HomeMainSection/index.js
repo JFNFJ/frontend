@@ -13,7 +13,6 @@ function HomeMainSection () {
             <span className="home-subtitle">Descubrí lo que piensa el mundo con tan sólo un click</span>
             <HomeDescription />
         </div>
-        <Charts/>
       </div>
     );
 }
