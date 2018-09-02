@@ -26,7 +26,9 @@ var menuStyles = {
     },
     bmItemList: {
       color: 'white',
-      padding: '0.8em'
+      padding: '0.8em',
+      display: 'flex',
+      flexDirection: 'column'
     },
     bmItem: {
       display: 'inline-block'

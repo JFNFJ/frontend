@@ -5,6 +5,7 @@ import logo from '../../assets/logo.png';
 import menuStyles from './menuStyles';
 
 import OpinionThreadSection from '../OpinionThreadSection';
+import SocialCatDashboard from '../SocialCatDashboard';
 
 class SocialCatDataSection extends Component {
   render() {
@@ -18,9 +19,7 @@ class SocialCatDataSection extends Component {
       return (
         <div id="outer-container" className="social-cat-data-section">
           <Menu styles={menuStyles} noOverlay {...MenuSettings}>
-            <div id="page-wrap">
-              <a id="home" className="menu-item" href="/">Home</a>
-            </div>
+            <SocialCatDashboard />
           </Menu>
           <OpinionThreadSection />
         </div>
