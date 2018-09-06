@@ -3,7 +3,6 @@ import React from 'react';
 import './styles.css';
 
 import HomeDescription from '../HomeDescription';
-import Charts from '../Charts';
 
 function HomeMainSection () {
     return(
