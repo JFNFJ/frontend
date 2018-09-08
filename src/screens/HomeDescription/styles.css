@@ -4,6 +4,7 @@
   align-self: center;
   justify-content: space-between;
   margin-top: 25vh;
+  overflow: hidden;
 }
 
 .home-description-text {

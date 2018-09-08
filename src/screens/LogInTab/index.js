@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 
 import './styles.css';
 
-function login(e) {
-  debugger
-};
-
 class LogInTab extends Component {
   constructor(props){
     super(props);
