@@ -1,21 +1,38 @@
 import React, { Component } from 'react';
 import './styles.css';
 
+import SocialCatOTDashboardComponent from '../SocialCatOTDashboardComponent'
+
 class SocialCatDashboard extends Component {
 
-    handleResponse(response){
-        
+  constructor(props){
+    super(props);
+    this.state = {
+      opinionThread: []
     }
+  }
 
-    componentWillMount() {
-      fetch('http://www.mocky.io/v2/5b70a3af2e00006d0093666c')
-      .then(this.handleResponse)
-    }
+  handleElements(arrayOfElements) {
+    this.setState({
+      opinionThread: arrayOfElements.map(element => this.createDashboardElement(element))
+    })    
+  }
+
+  createDashboardElement(element) {
+    return (
+      <SocialCatOTDashboardComponent ot_id={element.id} ot_name={element.name} />
+    )
+  }
+
+  componentWillMount() {
+    fetch('http://www.mocky.io/v2/5b8c415b2f00004e02ceebde')
+      .then(response => response.json())
+      .then(data => this.handleElements(data))
+  }
 
     render() {
       return (
-        <div className="social-cat-dashboard">
-        </div>
+        this.state.opinionThread
       );
     }
   }

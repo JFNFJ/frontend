@@ -57,3 +57,40 @@
 .ot-name-label-input:focus {
     outline-width: 0;
 }
+
+.ot-button {
+    background-color: #17c2ba;
+    color: white;
+    border-radius: 5px;
+    border: 0;
+    padding: 5px;
+    margin: 5px;
+  }
+
+.ot-datepicker-label {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.react-datepicker__input-container{
+    border-radius: 5px;
+    color: #17c2ba;
+    border: none;
+    text-align: center;
+}
+
+.react-datepicker__input-container input{
+    border-radius: 5px;
+    color: #17c2ba;
+    border: none;
+    text-align: center;
+}
+
+.react-datepicker *{
+    font-size: 10px;
+}
+
+.react-datepicker__current-month, .react-datepicker-time__header{
+    font-size: 15px !important;
+}
