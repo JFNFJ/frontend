@@ -32,7 +32,7 @@ function dateFormat(date){
 
 const dataLocGen = () => {
   var ret = {};
-  for (let index = 5; index != 0; index--) {
+  for (let index = 5; index !== 0; index--) {
     const day = dateFormat(new Date(new Date().setDate(new Date().getDate()-index)));
     ret[day] = dataSexGen();
   }

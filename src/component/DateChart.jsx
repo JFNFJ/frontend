@@ -1,5 +1,4 @@
 import React from 'react';
-import { toLabel } from './utils';
 import ChartistGraph from 'react-chartist';
 
 import './chart.css';
