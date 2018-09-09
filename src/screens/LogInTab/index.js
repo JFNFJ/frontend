@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import apiRoute from '../../config/api';
 
 import './styles.css';
 
@@ -15,10 +16,12 @@ class LogInTab extends Component {
   handleResponse = response => {
     if (response.status >= 200 && response.status < 300) {
       response.json().then(body=> {
+        debugger;
         localStorage.setItem('user', body.user);
+        localStorage.setItem('id', body.user);
         localStorage.setItem('token',body.token);
       })
-      window.location.href = 'home';
+      //window.location.href = 'home';
     } else {
       // TODO Cuando algo sale mal
     }
@@ -26,16 +29,19 @@ class LogInTab extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    fetch('http://www.mocky.io/v2/5b7090252e00002a0093665d',{
+    fetch(apiRoute + 'login',{
       method: 'POST',
       headers: {
-        'Accept': 'application/json',
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': "GET, PUT, POST, DELETE, HEAD, OPTIONS"
       },
       body: JSON.stringify({
-        user: this.state.user,
-        pass: this.state.pass
-      })
+        name: this.state.user,
+        password: this.state.pass
+      }),
+      mode: 'cors',
     })
     .then(this.handleResponse);
   }
