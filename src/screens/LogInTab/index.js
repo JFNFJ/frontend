@@ -19,7 +19,6 @@ class LogInTab extends Component {
         localStorage.setItem('user', body.name);
         localStorage.setItem('token',body.token);
       })
-      debugger;
       window.location.href = 'home/' + localStorage.getItem('user');
     } else {
       // TODO Cuando algo sale mal
