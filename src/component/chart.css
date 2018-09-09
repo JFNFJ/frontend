@@ -4,6 +4,22 @@
     color: #f2f2f2;
   }
   
-  .arc path {
-    stroke: #fff;
-  }
+.arc path {
+  stroke: #fff;
+}
+
+.ct-series-a .ct-slice-pie {
+  fill: green
+}
+
+.ct-series-b .ct-slice-pie{
+  fill: red
+}
+
+.ct-series-c .ct-slice-pie{
+  fill: gray
+}
+
+.ct-label {
+  font-size: 20px;
+}
