@@ -32,7 +32,7 @@ export default ({data}) => {
 
   return (
     <svg width={width} height={height}>
-      <g transform={`translate(${width / 2}, ${height / 2})`}>
+      <g>
         {pieData.map(d => (
           <g className="arc" key={`a${d.data.label}`}>
             <path d={arc(d)} fill={color(d.data.label)} />

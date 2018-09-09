@@ -5,6 +5,8 @@ import DateChart from '../../component/DateChart';
 import Paw from '../../model/Paw';
 import { Object } from 'core-js';
 
+import './styles.css';
+
 const getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max))
 
 const dataGen = (coef) => new Paw(getRandomInt(10 * coef),
@@ -144,7 +146,8 @@ export default class Charts extends Component {
 
   render() {
     return (
-      <div>
+      <div class="Charts">
+        <h1>{this.props.match.params.id}</h1> 
         <div>
           <label>
             Pais:
@@ -172,14 +175,20 @@ export default class Charts extends Component {
           </label>
         </div>
 
-        <h1> Mapa! </h1>
-        <MapChart data={getMapData(data, this.state.filter)} />
+        <div className="chartCard">
+          <h1> Mapa! </h1>
+          <MapChart data={getMapData(data, this.state.filter)} />
+        </div>
 
-        <h1> General! </h1>
-        <CakeChart data={getData(data, this.state.filter)} />
+        <div className="chartCard">
+          <h1> General! </h1>
+          <CakeChart data={getData(data, this.state.filter)} />
+        </div>
 
-        <h1> Fecha! </h1>
-        <DateChart />
+        <div className="chartCard">
+          <h1> Fecha! </h1>
+          <DateChart />
+        </div>
       </div>
     );
   };

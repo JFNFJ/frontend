@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route , BrowserRouter as Router } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import './styles.css';
 
 import OpinionThreadForm from '../OpinionThreadForm';
