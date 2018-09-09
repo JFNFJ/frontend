@@ -16,12 +16,11 @@ class LogInTab extends Component {
   handleResponse = response => {
     if (response.status >= 200 && response.status < 300) {
       response.json().then(body=> {
-        debugger;
-        localStorage.setItem('user', body.user);
-        localStorage.setItem('id', body.user);
+        localStorage.setItem('user', body.name);
         localStorage.setItem('token',body.token);
       })
-      //window.location.href = 'home';
+      debugger;
+      window.location.href = 'home/' + localStorage.getItem('user');
     } else {
       // TODO Cuando algo sale mal
     }
@@ -31,17 +30,10 @@ class LogInTab extends Component {
     event.preventDefault();
     fetch(apiRoute + 'login',{
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': "GET, PUT, POST, DELETE, HEAD, OPTIONS"
-      },
       body: JSON.stringify({
         name: this.state.user,
         password: this.state.pass
-      }),
-      mode: 'cors',
+      })
     })
     .then(this.handleResponse);
   }
