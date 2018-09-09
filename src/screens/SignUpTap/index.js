@@ -16,6 +16,11 @@ class SignUpTab extends Component {
     };
   }
 
+  getCookie = function(name) {
+    var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    if (match) return match[2];
+  }
+
   handleSubmit = e => {
     // TODO Validar datos
     e.preventDefault();
@@ -33,10 +38,10 @@ class SignUpTab extends Component {
   handleResponse = response => {
     if (response.status >= 200 && response.status < 300) {
       response.json().then(body=> {
-        localStorage.setItem('user', body.name);
-        localStorage.setItem('token',body.token);
+        document.cookie = "user_social_cat=" + body.name + ";"
+        document.cookie = "token_social_cat=" + body.token + ";";
       })
-      window.location.href = 'home/' + localStorage.getItem('user');
+      window.location.href = 'home/' + this.getCookie("user_social_cat");
     } else {
       // TODO Cuando algo sale mal
     }
