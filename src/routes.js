@@ -9,7 +9,7 @@ function AppRoutes() {
       <Router>
         <div>
             <Route exact path="/" component={Home} />
-            <Route path="/home" component={SocialCatHome} />
+            <Route path="/home/:name" component={SocialCatHome} />
             <Route path="/charts" component={Charts} />
         </div>
       </Router>

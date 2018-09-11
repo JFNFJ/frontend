@@ -8,6 +8,11 @@ import LogInTab from '../LogInTab';
 import SignUpTab from '../SignUpTap';
 
 class MainHeader extends Component {
+  handleLogOff = e => {
+    document.cookie = "user_social_cat=;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    document.cookie = "token_social_cat=;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    window.location.href = "/";
+  }
   render() {
     return(
       <div className="header">
@@ -39,7 +44,7 @@ class MainHeader extends Component {
          </div>
         :
          <div className="header-buttons">
-           <button className="header-button">Log Off</button>
+           <button className="header-button" onClick={this.handleLogOff}>Log Off</button>
          </div>
         }
       </div>
