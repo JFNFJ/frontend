@@ -1,0 +1,20 @@
+.form-control {
+    margin-bottom: 30px;
+    margin-top: 15px;
+}
+
+.btn-social-cat {
+    color: white;
+    background-color: #17c2ba;
+    border-color: aquamarine;
+    margin: 5px;
+    font-family: 'Roboto', sans-serif;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid aquamarine;
+}
+
+.btn-social-cat:hover {
+    color: #17c2ba;
+    background-color: white;
+}

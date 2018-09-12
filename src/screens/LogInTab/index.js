@@ -64,7 +64,7 @@ class LogInTab extends Component {
             <input value={this.state.pass} onChange={this.handlePassChange} className="login-input-field" type="password" name="name" />
           </label>
           <button className="login-button" type="submit">Ingresar</button>
-          <a className="login-href" href="#" onClick={this.props.showResetPasswordModal}>¿Olvidó su contraseña?</a>
+          <a className="login-href" href="#" onClick={this.props.showResetPasswordModal}>Olvidé mi contraseña</a>
         </form>
       </div>
     );
