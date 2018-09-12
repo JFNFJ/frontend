@@ -30,7 +30,7 @@ class MainHeader extends Component {
              noCaret
              pullRight
            >
-             <LogInTab/>
+             <LogInTab showResetPasswordModal={this.props.showResetPasswordModal}/>
            </DropdownButton>
            <DropdownButton 
              className="header-button"
