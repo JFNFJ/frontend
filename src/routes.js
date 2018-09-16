@@ -8,7 +8,7 @@ function AppRoutes() {
       <Router>
         <div>
             <Route exact path="/" component={Home} />
-            <Route path="/home" component={SocialCatHome} />
+            <Route path="/home/:name" component={SocialCatHome} />
         </div>
       </Router>
   );
