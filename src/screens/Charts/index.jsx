@@ -5,6 +5,8 @@ import DateChart from '../../component/DateChart';
 import Paw from '../../model/Paw';
 import { Object } from 'core-js';
 
+import './styles.css';
+
 const getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max))
 
 const dataGen = (coef) => new Paw(getRandomInt(10 * coef),
@@ -21,15 +23,20 @@ const dataSexGen = () => {
   }
 }
 
+
+function dateFormat(date){
+  var day = date.getDate();
+  var month = date.getMonth() + 1;
+  return day + "/" + month;
+}
+
 const dataLocGen = () => {
-  return {
-    "21-08-2018": dataSexGen(),
-    "22-08-2018": dataSexGen(),
-    "23-08-2018": dataSexGen(),
-    "24-08-2018": dataSexGen(),
-    "25-08-2018": dataSexGen(),
-    "26-08-2018": dataSexGen()
+  var ret = {};
+  for (let index = 5; index !== 0; index--) {
+    const day = dateFormat(new Date(new Date().setDate(new Date().getDate()-index)));
+    ret[day] = dataSexGen();
   }
+  return ret;
 }
 
 const data = {
@@ -88,6 +95,13 @@ const getMapData = (data, filter) => {
   });
 }
 
+const getDateData = (data, filter) => {
+  return Object.keys(data.AR).map((key) => {
+    const value = getData(data, { ...filter, day: key });
+    return { k: key, v: value }
+  });
+}
+
 export default class Charts extends Component {
   constructor(props) {
     super(props)
@@ -99,7 +113,7 @@ export default class Charts extends Component {
       },
       countries: Object.keys(data).concat("all"),
       days: Object.keys(data.AR).concat("all"),
-      genres: Object.keys(data.AR["21-08-2018"]).concat("all")
+      genres: Object.keys(data.AR[Object.keys(data.AR)[0]]).concat("all")
     };
     this.handleCountryChange = this.handleCountryChange.bind(this);
     this.handleDayChange = this.handleDayChange.bind(this);
@@ -144,7 +158,8 @@ export default class Charts extends Component {
 
   render() {
     return (
-      <div>
+      <div class="Charts">
+        <h1>{this.props.match.params.id}</h1> 
         <div>
           <label>
             Pais:
@@ -172,14 +187,20 @@ export default class Charts extends Component {
           </label>
         </div>
 
-        <h1> Mapa! </h1>
-        <MapChart data={getMapData(data, this.state.filter)} />
+        <div className="chartCard">
+          <h1> Mapa! </h1>
+          <MapChart data={getMapData(data, this.state.filter)} />
+        </div>
 
-        <h1> General! </h1>
-        <CakeChart data={getData(data, this.state.filter)} />
+        <div className="chartCard">
+          <h1> General! </h1>
+          <CakeChart data={getData(data, this.state.filter)} />
+        </div>
 
-        <h1> Fecha! </h1>
-        <DateChart />
+        <div className="chartCard">
+          <h1> Fecha! </h1>
+          <DateChart data={getDateData(data, this.state.filter)}/>
+        </div>
       </div>
     );
   };

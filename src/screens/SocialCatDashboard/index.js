@@ -20,7 +20,7 @@ class SocialCatDashboard extends Component {
 
   createDashboardElement(element) {
     return (
-      <SocialCatOTDashboardComponent ot_id={element.id} ot_name={element.name} />
+      <SocialCatOTDashboardComponent key={element.id} ot_id={element.id} ot_name={element.name} />
     )
   }
 
