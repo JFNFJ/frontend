@@ -1,0 +1,132 @@
+import React from "react";
+import { Parallax } from "react-parallax";
+
+import "assets/css/landing-materialize.css";
+import "assets/css/landing.css";
+
+import background1 from "assets/img/background1.jpg";
+import background2 from "assets/img/background2.jpg";
+
+function Landing(props) {
+    return (
+        <div id="landing">
+            <Parallax bgImage={background1} strength={500}>
+                <div className="section">
+                    <div className="container">
+                        <br /><br /><br /><br />
+                        <h1 className="header center teal-text text-lighten-2">Social Cat</h1>
+                        <div className="row center">
+                            <h5 className="header col s12 light teal-text text-lighten-4">Descubrí lo que piensa el mundo con tan sólo un click</h5>
+                        </div>
+                        <div className="row center">
+                            <a href="/dashboard" className="btn-large waves-effect waves-light teal lighten-1">A los batidashboards!</a>
+                        </div>
+                        <br /><br /><br /><br />
+                    </div>
+                </div>
+            </Parallax>
+
+
+            <div className="container">
+                <div className="section">
+
+                    <div className="row">
+                        <div className="col s12 m4">
+                            <div className="icon-block">
+                                <h2 className="center brown-text"><i className="material-icons">flash_on</i></h2>
+                                <h5 className="center">AUTONOMIA</h5>
+
+                                <p className="light">Social Cat te permite decidir por vos mismo qué temas querés analizar y facilmente ver el estado de tus búsquedas cada vez que ingresás.</p>
+                            </div>
+                        </div>
+
+                        <div className="col s12 m4">
+                            <div className="icon-block">
+                                <h2 className="center brown-text"><i className="material-icons">settings</i></h2>
+                                <h5 className="center">PROCESAMIENTO</h5>
+
+                                <p className="light">La plataforma toma publicaciones extraídas de Twitter que mencionen la temática que planeaste, y las clasifica según estén a favor, en contra o si tienen una posición neutral al respecto.</p>
+                            </div>
+                        </div>
+
+                        <div className="col s12 m4">
+                            <div className="icon-block">
+                                <h2 className="center brown-text"><i className="material-icons">bar_chart</i></h2>
+                                <h5 className="center">VISUALIZACIÓN</h5>
+
+                                <p className="light">Los datos procesados se presentan de manera diversa e interactiva, utilizando gráficos que agrupan al público según su posición ante un tema concreto. Descubrí qué piensan diferentes países a lo largo del tiempo ¡y mucho más!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <Parallax bgImage={background2} strength={500}>
+                <div className="section">
+                    <div className="container">
+                        <div className="row center">
+                            <h5 className="header col s12 light teal-text text-lighten-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
+                        </div>
+                    </div>
+                </div>
+            </Parallax>
+
+            <div className="container">
+                <div className="section">
+
+                    <div className="row">
+                        <div className="col s12 center">
+                            <h3><i className="mdi-content-send brown-text"></i></h3>
+                            <h4>Contact Us</h4>
+                            <p className="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <footer className="page-footer teal">
+                <div className="container">
+                    <div className="row">
+                        <div className="col l6 s12">
+                            <h5 className="white-text">Company Bio</h5>
+                            <p className="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+
+                        </div>
+                        <div className="col l3 s12">
+                            <h5 className="white-text">Settings</h5>
+                            <ul>
+                                <li><a className="white-text" href="#!">Link 1</a></li>
+                                <li><a className="white-text" href="#!">Link 2</a></li>
+                                <li><a className="white-text" href="#!">Link 3</a></li>
+                                <li><a className="white-text" href="#!">Link 4</a></li>
+                            </ul>
+                        </div>
+                        <div className="col l3 s12">
+                            <h5 className="white-text">Connect</h5>
+                            <ul>
+                                <li><a className="white-text" href="#!">Link 1</a></li>
+                                <li><a className="white-text" href="#!">Link 2</a></li>
+                                <li><a className="white-text" href="#!">Link 3</a></li>
+                                <li><a className="white-text" href="#!">Link 4</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div className="footer-copyright">
+                    <div className="container">
+                        Made by <a className="brown-text text-lighten-3" href="https://github.com/JFNFJ">JFNFJ</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    );
+}
+
+Landing.propTypes = {
+};
+
+export default Landing;
