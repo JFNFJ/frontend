@@ -16,7 +16,7 @@ function Landing(props) {
                         <br /><br /><br /><br />
                         <h1 className="header center teal-text text-lighten-2">Social Cat</h1>
                         <div className="row center">
-                            <h5 className="header col s12 light teal-text text-lighten-4">Descubrí lo que piensa el mundo con tan sólo un click</h5>
+                            <h5 className="header col s12 teal-text black-text">Descubrí lo que piensa el mundo con tan sólo un click</h5>
                         </div>
                         <div className="row center">
                             <a href="/dashboard" className="btn-large waves-effect waves-light teal lighten-1">A los batidashboards!</a>
@@ -62,57 +62,14 @@ function Landing(props) {
                 </div>
             </div>
 
-
-            <Parallax bgImage={background2} strength={500}>
-                <div className="section">
-                    <div className="container">
-                        <div className="row center">
-                            <h5 className="header col s12 light teal-text text-lighten-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
-                        </div>
-                    </div>
-                </div>
-            </Parallax>
-
-            <div className="container">
-                <div className="section">
-
-                    <div className="row">
-                        <div className="col s12 center">
-                            <h3><i className="mdi-content-send brown-text"></i></h3>
-                            <h4>Contact Us</h4>
-                            <p className="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
             <footer className="page-footer teal">
                 <div className="container">
                     <div className="row">
                         <div className="col l6 s12">
                             <h5 className="white-text">Company Bio</h5>
-                            <p className="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+                            <p className="grey-text text-lighten-4">Este es un proyecto de la UTN FRBA para la materia Proyecto Final por parte del grupo 202: Joaquin Azcarate, Nicolas Zarewsky, Federico Bonisconti, Fransico Bravo y Julieta Colombo</p>
 
 
-                        </div>
-                        <div className="col l3 s12">
-                            <h5 className="white-text">Settings</h5>
-                            <ul>
-                                <li><a className="white-text" href="#!">Link 1</a></li>
-                                <li><a className="white-text" href="#!">Link 2</a></li>
-                                <li><a className="white-text" href="#!">Link 3</a></li>
-                                <li><a className="white-text" href="#!">Link 4</a></li>
-                            </ul>
-                        </div>
-                        <div className="col l3 s12">
-                            <h5 className="white-text">Connect</h5>
-                            <ul>
-                                <li><a className="white-text" href="#!">Link 1</a></li>
-                                <li><a className="white-text" href="#!">Link 2</a></li>
-                                <li><a className="white-text" href="#!">Link 3</a></li>
-                                <li><a className="white-text" href="#!">Link 4</a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>

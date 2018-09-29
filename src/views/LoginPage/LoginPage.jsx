@@ -37,6 +37,13 @@ class LoginPage extends React.Component {
       700
     );
   }
+
+  login = function() {
+    var pass = document.getElementById('pass').value;
+    var email = document.getElementById('name').value;
+    debugger;
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -60,7 +67,7 @@ class LoginPage extends React.Component {
                     <CardBody>
                       <CustomInput
                         labelText="Nombre..."
-                        id="first"
+                        id="name"
                         formControlProps={{
                           fullWidth: true
                         }}
@@ -69,21 +76,6 @@ class LoginPage extends React.Component {
                           endAdornment: (
                             <InputAdornment position="end">
                               <People className={classes.inputIconsColor} />
-                            </InputAdornment>
-                          )
-                        }}
-                      />
-                      <CustomInput
-                        labelText="Email..."
-                        id="email"
-                        formControlProps={{
-                          fullWidth: true
-                        }}
-                        inputProps={{
-                          type: "email",
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <Email className={classes.inputIconsColor} />
                             </InputAdornment>
                           )
                         }}
@@ -107,7 +99,7 @@ class LoginPage extends React.Component {
                       />
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
-                      <Button simple color="primary" size="lg">
+                      <Button onClick={this.login} simple color="primary" size="lg">
                         Entrar!
                       </Button>
                     </CardFooter>
