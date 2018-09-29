@@ -19,6 +19,7 @@ import CustomInput from "components/CustomInput/CustomInput.jsx";
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 
 import image from "assets/img/background1.jpg";
+import apiRoute from "../../config/api";
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -39,9 +40,22 @@ class LoginPage extends React.Component {
   }
 
   login = function() {
-    var pass = document.getElementById('pass').value;
-    var email = document.getElementById('name').value;
-    debugger;
+    fetch(apiRoute + 'login', {
+      method: 'POST',
+      body: JSON.stringify({
+          name: document.getElementById('name').value,
+          password: document.getElementById('pass').value
+      })
+    }).then(((response) => {
+      if (response.status >= 200 && response.status < 300) {
+        response.json().then(body => {
+            document.cookie = "user_social_cat=" + body.name + ";";
+            document.cookie = "token_social_cat=" + body.token + ";";
+        });
+    } else {
+      alert("Usuario o contraseña incorrecta.");
+    }
+    }));
   }
 
   render() {
