@@ -49,8 +49,9 @@ class LoginPage extends React.Component {
     }).then(((response) => {
       if (response.status >= 200 && response.status < 300) {
         response.json().then(body => {
-          debugger;
-          localStorage.setItem('myUsername', data);
+          localStorage.setItem('myUsername', body.name);
+          localStorage.setItem('token',body.token);
+          
         });
     } else {
       alert("Usuario o contraseña incorrecta.");
