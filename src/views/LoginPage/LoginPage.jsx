@@ -51,7 +51,7 @@ class LoginPage extends React.Component {
         response.json().then(body => {
           localStorage.setItem('myUsername', body.name);
           localStorage.setItem('token',body.token);
-          
+          window.location.href="/dashboard";
         });
     } else {
       alert("Usuario o contraseña incorrecta.");
