@@ -71,7 +71,7 @@ const Sidebar = ({ ...props }) => {
   );
   var brand = (
     <div className={classes.logo}>
-      <Link to="/dashboard/home" className={classes.logoLink}>
+      <Link to="/dashboard/new" className={classes.logoLink}>
         <div className={classes.logoImage}>
           <img src={logo} alt="logo" className={classes.img} />
         </div>

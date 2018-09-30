@@ -79,10 +79,11 @@ class New extends React.Component {
                     />
                   </GridItem>
                 </GridContainer>
+                
                 <GridContainer>
                   <GridItem xs={12} sm={12} md={6}>
                     <CustomInput
-                      labelText="Fecha de inicio"
+                      hintText="Fecha de inicio"
                       id="startDate"
                       inputProps={{
                         type: "date",
@@ -94,7 +95,7 @@ class New extends React.Component {
                   </GridItem>
                   <GridItem xs={12} sm={12} md={6}>
                     <CustomInput
-                      labelText="Fecha de Fin"
+                      hintText="Fecha de Fin"
                       id="endDate"
                       inputProps={{
                         type: "date",

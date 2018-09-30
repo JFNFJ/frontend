@@ -11,13 +11,6 @@ import { getTopics } from "services/topics";
 
 const dashboardRoutes = [
   {
-    path: "/dashboard/home",
-    sidebarName: "Home",
-    navbarName: "Home",
-    icon: Home,
-    component: HomePage
-  },
-  {
     path: "/dashboard/new",
     sidebarName: "New OpinionThread",
     navbarName: "Create an Opinion thread",

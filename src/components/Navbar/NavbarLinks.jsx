@@ -47,7 +47,7 @@ function NavbarLinks({ ...props }) {
       </ListItem>
       <ListItem className={classes.listItem}>
         <Button
-          href="/dashboard/home"
+          href="/dashboard/new"
           color="transparent"
           target="_blank"
           className={classes.navLink}
