@@ -36,8 +36,9 @@ function Navbar(props) {
                         <Button
                             component={Link}
                             to="/login"
-                            className={classes.navLink}
-                            color="transparent"
+                            className={classes.registerNavLink}
+                            color="primary"
+                            round
                         >
                             Log in
                         </Button>

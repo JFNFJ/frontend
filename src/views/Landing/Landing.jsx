@@ -4,14 +4,13 @@ import { Parallax } from "react-parallax";
 import "assets/css/landing-materialize.css";
 import "assets/css/landing.css";
 
-import background1 from "assets/img/background1.jpg";
-import background2 from "assets/img/background2.jpg";
+import background1 from "assets/img/back-dark.jpeg";
 
 function Landing(props) {
     return (
         <div id="landing">
-            <Parallax bgImage={background1} strength={500}>
-                <div className="section">
+            <Parallax bgImage={background1} strength={500} blur={{ min: -15, max: 15 }} >
+                <div className="section" >
                     <div className="container">
                         <br /><br /><br /><br />
                         <h1 className="header center teal-text text-lighten-2">Social Cat</h1>
