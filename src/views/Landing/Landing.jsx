@@ -4,7 +4,7 @@ import { Parallax } from "react-parallax";
 import "assets/css/landing-materialize.css";
 import "assets/css/landing.css";
 
-import background1 from "assets/img/back-dark.jpeg";
+import background1 from "assets/img/cat.jpeg";
 
 function Landing(props) {
     return (
@@ -15,10 +15,7 @@ function Landing(props) {
                         <br /><br /><br /><br />
                         <h1 className="header center teal-text text-lighten-2">Social Cat</h1>
                         <div className="row center">
-                            <h5 className="header col s12 teal-text black-text">Descubrí lo que piensa el mundo con tan sólo un click</h5>
-                        </div>
-                        <div className="row center">
-                            <a href="/dashboard" className="btn-large waves-effect waves-light teal lighten-1">A los batidashboards!</a>
+                            <h5 className="header col s12 light teal-text text-lighten-4">Descubrí lo que piensa el mundo con tan sólo un click</h5>
                         </div>
                         <br /><br /><br /><br />
                     </div>

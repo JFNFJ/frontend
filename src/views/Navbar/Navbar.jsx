@@ -19,7 +19,7 @@ function Navbar(props) {
         <Header
             brand="Social Cat"
             absolute
-            color="transparent"
+            color="white"
             routes={routes}
             leftLinks={
                 <List className={classes.list}>
