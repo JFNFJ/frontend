@@ -20,6 +20,8 @@ import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 
 import image from "assets/img/background2.jpg";
 
+import apiRoute from "../../config/api";
+
 class Signup extends React.Component {
   constructor(props) {
     super(props);
@@ -37,6 +39,28 @@ class Signup extends React.Component {
       700
     );
   }
+
+  signUp = function() {
+    fetch(apiRoute + 'sign_up', {
+      method: 'POST',
+      body: JSON.stringify({
+          name: document.getElementById('first').value,
+          password: document.getElementById('pass').value,
+          email: document.getElementById('email').value
+      })
+    }).then(((response) => {
+      if (response.status >= 200 && response.status < 300) {
+        response.json().then(body => {
+          localStorage.setItem('myUsername', body.name);
+          localStorage.setItem('token',body.token);
+          window.location.href="/dashboard";
+        });
+    } else {
+      // Validate user sign in with warning
+    }
+    }));
+  }
+
   render() {
     const { classes } = this.props;
     return (
@@ -107,7 +131,7 @@ class Signup extends React.Component {
                       />
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
-                      <Button simple color="primary" size="lg">
+                      <Button onClick={this.signUp} simple color="primary" size="lg">
                         Registrarse!
                       </Button>
                     </CardFooter>
