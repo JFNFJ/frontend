@@ -25,7 +25,7 @@ const dashboardRoutes = [
     icon: Dashboard,
     component: DashboardsPage
   },
-  { redirect: true, path: "/dashboard", to: "/dashboard/home", navbarName: "Redirect" }
+  { redirect: true, path: "/dashboard", to: "/dashboard/new", navbarName: "Redirect" }
 ];
 
 export default dashboardRoutes;
