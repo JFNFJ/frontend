@@ -57,7 +57,7 @@ class LoginPage extends React.Component {
       alert("Usuario o contraseña incorrecta.");
     }
     }));
-  }
+  };
 
   render() {
     const { classes } = this.props;
