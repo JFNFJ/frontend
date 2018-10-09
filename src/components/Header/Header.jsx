@@ -18,12 +18,12 @@ function Header({ ...props }) {
   function makeBrand() {
     var name;
     props.routes.map((prop, key) => {
-      if (prop.path.startsWith(props.location.pathname)) {
+      if (props.location.pathname.startsWith(prop.path) && !prop.redirect) {
         name = prop.navbarName;
       }
       return null;
     });
-    return name;
+    return name || "SocialCat";
   }
   const { classes, color } = props;
   const appBarClasses = classNames({

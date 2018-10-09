@@ -17,7 +17,7 @@ function fake_db(){
 
 
 function nextTopicId(){
-    return Math.max(fake_db().map(topic => topic.id)) + 1;
+    return Math.max(...fake_db().map(topic => topic.id)) + 1;
 }
 
 function fake_getTopics() {
@@ -32,6 +32,7 @@ function real_getTopics() {
 
 function fake_getTopic(id) {
     return new Promise((resolve, _) => {
+        //eslint-disable-next-line
         setTimeout(() => resolve(fake_db().find(t => t.id == id)), 800);
     });
 }

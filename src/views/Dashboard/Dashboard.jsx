@@ -16,6 +16,7 @@ import CardHeader from "components/Card/CardHeader.jsx";
 import CardIcon from "components/Card/CardIcon.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
+import NotYetCompleted from "components/NotYetCompleted/NotYetCompleted";
 
 import MapChart from "components/Charts/MapChart";
 import CakeChart from "components/Charts/CakeChart";
@@ -39,6 +40,10 @@ class Dashboard extends React.Component {
   render() {
     const { topic, data, classes } = this.props;
     const startDate = moment(topic.start);
+
+    if(moment.duration(moment().diff(startDate)).asMinutes() < 10){
+      return <NotYetCompleted />
+    }
 
     return (
       <div>
