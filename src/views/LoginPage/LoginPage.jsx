@@ -5,6 +5,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
 import People from "@material-ui/icons/People";
+import Error from "@material-ui/icons/Error";
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
@@ -14,20 +15,32 @@ import CardBody from "components/Card/CardBody.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
+import Snackbar from "components/Snackbar/Snackbar.jsx";
 
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 
 import image from "assets/img/background1.jpg";
-import apiRoute from "../../config/api";
+import { login } from "services/login";
 
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     // we use this to make the card to appear after the page has been rendered
     this.state = {
-      cardAnimaton: "cardHidden"
+      cardAnimaton: "cardHidden",
+      name: "",
+      password: "",
+      error: false,
+      errorText: 'Oops'
     };
   }
+
+  handleChange(name, event) {
+    this.setState({
+      [name]: event.target.value,
+    });
+  }
+
   componentDidMount() {
     // we add a hidden class to the card and after 700 ms we delete it and the transition appears
     setTimeout(
@@ -38,30 +51,34 @@ class LoginPage extends React.Component {
     );
   }
 
-  login = function() {
-    fetch(apiRoute + 'login', {
-      method: 'POST',
-      body: JSON.stringify({
-          name: document.getElementById('name').value,
-          password: document.getElementById('pass').value
-      })
-    }).then(((response) => {
-      if (response.status >= 200 && response.status < 300) {
-        response.json().then(body => {
-          localStorage.setItem('myUsername', body.name);
-          localStorage.setItem('token',body.token);
-          window.location.href="/dashboard";
-        });
-    } else {
-      alert("Usuario o contraseña incorrecta.");
-    }
-    }));
-  };
+  notify(error){
+    console.error(error);
+    this.setState({error: true, errorText: error});
+    setTimeout(() => {
+      this.setState({error: false});
+    }, 6000);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    login(this.state.name, this.state.password)
+      .then(() => this.props.history.push('/dashboard/new'))
+      .catch(this.notify.bind(this));
+  }
 
   render() {
     const { classes } = this.props;
     return (
       <div>
+        <Snackbar
+          place="tc"
+          color="danger"
+          icon={Error}
+          message={this.state.errorText}
+          open={this.state.error}
+          closeNotification={() => this.setState({ error: false })}
+          close
+        />
         <div
           className={classes.pageHeader}
           style={{
@@ -74,16 +91,17 @@ class LoginPage extends React.Component {
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={4}>
                 <Card className={classes[this.state.cardAnimaton]}>
-                  <form className={classes.form}>
+                  <form className={classes.form} onSubmit={this.handleSubmit.bind(this)}>
                     <CardHeader color="primary" className={classes.cardHeader}>
                       <h4>Login</h4>
                     </CardHeader>
                     <CardBody>
                       <CustomInput
                         labelText="Nombre..."
-                        id="name"
                         formControlProps={{
-                          fullWidth: true
+                          fullWidth: true,
+                          value: this.state.name,
+                          onChange: this.handleChange.bind(this, 'name')
                         }}
                         inputProps={{
                           type: "text",
@@ -96,9 +114,10 @@ class LoginPage extends React.Component {
                       />
                       <CustomInput
                         labelText="Password"
-                        id="pass"
                         formControlProps={{
-                          fullWidth: true
+                          fullWidth: true,
+                          value: this.state.password,
+                          onChange: this.handleChange.bind(this, 'password')
                         }}
                         inputProps={{
                           type: "password",
@@ -113,7 +132,7 @@ class LoginPage extends React.Component {
                       />
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
-                      <Button onClick={this.login} simple color="primary" size="lg">
+                      <Button type="submit" simple color="primary" size="lg">
                         Entrar!
                       </Button>
                     </CardFooter>

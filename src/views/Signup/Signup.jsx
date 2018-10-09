@@ -20,7 +20,7 @@ import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 
 import image from "assets/img/background2.jpg";
 
-import apiRoute from "../../config/api";
+import { apiRoute } from "config/api";
 
 class Signup extends React.Component {
   constructor(props) {

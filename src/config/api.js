@@ -1,4 +1,1 @@
-
-const apiRoute = 'http://104.248.53.21/api/';
-  
-export default apiRoute;
+export const apiRoute = process.env.REACT_APP_API_URL;

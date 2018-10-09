@@ -23,7 +23,7 @@ import {getTrendingTopics} from "services/topics";
 
 
 import trending from "assets/img/trending.png";
-import apiRoute from "../../config/api";
+import { apiRoute } from "../../config/api";
 
 const moment = require('moment');
 
