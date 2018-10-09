@@ -32,7 +32,7 @@ function real_getTopics() {
 
 function fake_getTopic(id) {
     return new Promise((resolve, _) => {
-        setTimeout(() => resolve(fake_db().find(t => t.id === id)), 800);
+        setTimeout(() => resolve(fake_db().find(t => t.id == id)), 800);
     });
 }
 

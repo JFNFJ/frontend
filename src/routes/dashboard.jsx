@@ -2,7 +2,7 @@
 import Dashboard from "@material-ui/icons/Dashboard";
 import FiberNew from "@material-ui/icons/FiberNew";
 // core components/views
-import DashboardsPage from "views/Dashboard/Dashboards.jsx";
+import DashboardsPage from "views/Dashboard/DashboardRouter";
 import NewPage from "views/Dashboard/New.jsx";
 
 import { getTopics } from "services/topics";
@@ -11,14 +11,14 @@ const dashboardRoutes = [
   {
     path: "/dashboard/new",
     sidebarName: "New OpinionThread",
-    navbarName: "Create an Opinion thread",
+    navbarName: "Crear un Opinion thread",
     icon: FiberNew,
     component: NewPage
   },
   {
-    path: "/dashboard/topic/:id",
+    path: "/dashboard/topic",
     sidebarName: "Threads",
-    navbarName: "Create an Opinion thread",
+    navbarName: "Opinion thread",
     threads: getTopics(),
     icon: Dashboard,
     component: DashboardsPage
