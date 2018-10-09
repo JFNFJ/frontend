@@ -1,6 +1,7 @@
 import React from "react";
 
 import Dashboard from "views/Dashboard/Dashboard";
+import GridLoader from 'react-spinners/GridLoader';
 
 import { getDataFor } from "services/data";
 import { getTopic } from "services/topics";
@@ -29,7 +30,7 @@ class Dashboards extends React.Component {
 
   render() {
     if(!this.state.data || !this.state.topic){
-      return (<div>Loading...</div>);
+      return (<GridLoader sizeUnit={"px"} size={150} color={'#123abc'}/>);
     }
 
     return (
