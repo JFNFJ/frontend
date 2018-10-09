@@ -23,7 +23,7 @@ function Header({ ...props }) {
       }
       return null;
     });
-    return name || props.location.pathname.split(/[,/]+/).pop();
+    return name;
   }
   const { classes, color } = props;
   const appBarClasses = classNames({

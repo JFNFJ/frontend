@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // core components
@@ -19,11 +19,10 @@ import CardFooter from "components/Card/CardFooter.jsx";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 
-import {getTrendingTopics} from "services/topics";
+import { getTrendingTopics, addTopic } from "services/topics";
 
 
 import trending from "assets/img/trending.png";
-import { apiRoute } from "../../config/api";
 
 const moment = require('moment');
 
@@ -47,36 +46,27 @@ const styles = {
 };
 
 class New extends React.Component {
-    state = {
-        topic: '',
-        language: 'es',
-        endDate: null
-    };
+    constructor(props) {
+        super(props)
+        this.state = {
+            topic: '',
+            language: 'es',
+            endDate: null
+        };
+    }
 
     handleSubmit(event) {
         event.preventDefault();
-        let date = moment(this.state.endDate).format('DD-MM-YYYY');
-        fetch(apiRoute + 'topics', {
-            method: 'POST',
-            headers: {
-                token: localStorage.getItem('token')
-            },
-            body: JSON.stringify({
-                name: this.state.topic,
-                deadline: date,
-                language: this.state.language
-            })
-        }).then(((response) => {
-            if (response.status >= 200 && response.status < 300) {
-                window.location.href = "/dashboard/" + this.state.topic;
-            } else {
-                alert("Hubo un error creando un nuevo thread.");
-            }
-        }))
+        addTopic({
+            name: this.state.topic,
+            deadline: moment(this.state.endDate).format('DD-MM-YYYY'),
+            language: this.state.language
+        })
+      .then((response) => this.props.history.push('/dashboard/topic/' + response.topicId))
     }
 
     render() {
-        const {classes} = this.props;
+        const { classes } = this.props;
         const self = this;
         return (
             <form onSubmit={this.handleSubmit.bind(this)}>
@@ -96,10 +86,10 @@ class New extends React.Component {
                                             formControlProps={{
                                                 fullWidth: true
                                             }}
+                                            value={self.state.topic}
                                             inputProps={{
-                                                value: self.state.topic,
                                                 onChange: e => {
-                                                    self.setState({topic: e.target.value})
+                                                    self.setState({ topic: e.target.value })
                                                 }
                                             }}
                                         />
@@ -119,9 +109,6 @@ class New extends React.Component {
                                                     name: 'language',
                                                     id: 'id-language',
                                                 }}
-                                                formControlProps={{
-                                                fullWidth: true
-                                            }}
                                             >
                                                 <MenuItem value='es'>Español</MenuItem>
                                                 <MenuItem value='en'>Inglés</MenuItem>
@@ -134,13 +121,11 @@ class New extends React.Component {
                                             id="endDate"
                                             inputProps={{
                                                 type: "date",
-                                                value: self.state.endDate,
-                                                onChange: e => {
-                                                    self.setState({endDate: e.target.value})
-                                                }
                                             }}
                                             formControlProps={{
-                                                fullWidth: true
+                                                fullWidth: true,
+                                                value: self.state.endDate,
+                                                onChange: e => self.setState({ endDate: e.target.value })
                                             }}
                                         />
                                     </GridItem>
@@ -155,7 +140,7 @@ class New extends React.Component {
                         <Card profile>
                             <CardAvatar profile>
                                 <a href="#pablo" onClick={e => e.preventDefault()}>
-                                    <img src={trending} alt="..."/>
+                                    <img src={trending} alt="..." />
                                 </a>
                             </CardAvatar>
                             <CardBody profile>

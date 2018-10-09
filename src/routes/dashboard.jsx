@@ -16,9 +16,9 @@ const dashboardRoutes = [
     component: NewPage
   },
   {
-    path: "/dashboard/:term",
+    path: "/dashboard/topic/:id",
     sidebarName: "Threads",
-    navbarName: "Opinion Thread result",
+    navbarName: "Create an Opinion thread",
     threads: getTopics(),
     icon: Dashboard,
     component: DashboardsPage

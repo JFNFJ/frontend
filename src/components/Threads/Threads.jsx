@@ -9,25 +9,40 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 
-const Threads = ({ ...props }) => {
-    function activeRoute(routeName) {
-        return props.location.pathname.indexOf(routeName) > -1 ? true : false;
+class Threads extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            loading: true,
+            threads: [],
+        };
+        props.threads.then(threads => this.setState({ loading: false, threads: threads }));
     }
-    const { classes, color, threads } = props;
 
-    if (!threads) return null;
-    return (
-        <List className={classes.list}>
-            {threads.map((prop, key) => {
+    activeRoute(routeName) {
+        return this.props.location.pathname.indexOf(routeName) > -1 ? true : false;
+    }
+
+    render(){
+        if(this.state.loading){
+            return (<p>
+                Loading...
+            </p>)
+        }
+
+        const { classes, color } = this.props;
+        return (
+            <List className={classes.list}>
+            {this.state.threads.map((prop, key) => {
                 const whiteFontClasses = classNames({
-                    [" " + classes.whiteFont]: activeRoute(prop.term)
+                    [" " + classes.whiteFont]: this.activeRoute(prop.id)
                 });
                 const listItemClasses = classNames({
-                    [" " + classes[color]]: activeRoute(prop.term)
+                    [" " + classes[color]]: this.activeRoute(prop.id)
                   });
                 return (
                     <NavLink
-                        to={"/dashboard/" + prop.term}
+                        to={"/dashboard/topic/" + prop.id}
                         className={classes.item}
                         activeClassName="active"
                         key={key}
@@ -37,7 +52,7 @@ const Threads = ({ ...props }) => {
                                 <Explore />
                             </ListItemIcon>
                             <ListItemText
-                                primary={prop.term}
+                                primary={prop.term.name}
                                 className={classes.itemText + whiteFontClasses}
                                 disableTypography={true}
                             />
@@ -47,6 +62,7 @@ const Threads = ({ ...props }) => {
             })}
         </List>
     );
+        }
 };
 
 Threads.propTypes = {

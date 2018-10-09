@@ -63,7 +63,7 @@ const Sidebar = ({ ...props }) => {
                 />
               </ListItem>
             </NavLink>
-            <Threads threads={prop.threads} {...props}/>
+            {prop.threads ? <Threads threads={prop.threads} {...props}/> : <span />}
           </span>
         );
       })}
