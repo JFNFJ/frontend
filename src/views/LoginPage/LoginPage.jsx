@@ -62,6 +62,7 @@ class LoginPage extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     login(this.state.name, this.state.password)
+      .then((user) => localStorage.setItem('name', user.name))
       .then(() => this.props.history.push('/dashboard/new'))
       .catch(this.notify.bind(this));
   }

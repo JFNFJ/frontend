@@ -8,11 +8,11 @@ function handleErrors(response) {
 }
 
 
-function real_login(name, password) {
+function real_login(email, password) {
     const req = {
         method: 'POST',
         body: {
-            name: name,
+            name: email,
             password: password
         }
     };
@@ -20,19 +20,20 @@ function real_login(name, password) {
     return fetch(apiRoute + 'login', req)
         .then(handleErrors)
         .then(response => response.json())
-        .then(response => {
-            localStorage.setItem('name', response.name);
-            localStorage.setItem('token', response.token);
-        });
+        .then(_ => ({name: email}));
 }
 
-function fake_login(name, password) {
+function emailUsername(emailAddress) {
+    return emailAddress.match(/^(.+)@/)[1];
+ }
+
+function fake_login(email, password) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            if (name.includes("gmail")) {
-                resolve('Logged in!')
+            if (email.includes("gmail")) {
+                resolve({ name: emailUsername(email)})
             } else {
-                reject('Invalid user name')
+                reject('Invalid email')
             }
         }, 800)
     });

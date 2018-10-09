@@ -7,6 +7,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Hidden from "@material-ui/core/Hidden";
+import Person from "@material-ui/icons/Person";
 // @material-ui/icons
 import Menu from "@material-ui/icons/Menu";
 import Button from "components/CustomButtons/Button.jsx";
@@ -28,6 +29,7 @@ function Header({ ...props }) {
   const appBarClasses = classNames({
     [" " + classes[color]]: color
   });
+  const userName = localStorage.getItem('name');
   return (
     <AppBar className={classes.appBar + appBarClasses}>
       <Toolbar className={classes.container}>
@@ -37,6 +39,8 @@ function Header({ ...props }) {
             {makeBrand()}
           </Button>
         </div>
+        <span>{userName}</span>
+        <Person />
         <Hidden mdUp implementation="css">
           <IconButton
             color="inherit"
