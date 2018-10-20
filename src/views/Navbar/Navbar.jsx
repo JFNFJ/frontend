@@ -35,6 +35,17 @@ function Navbar(props) {
                     <ListItem className={classes.listItem}>
                         <Button
                             component={Link}
+                            to="/reset"
+                            className={classes.registerNavLink}
+                            color="transparent"
+                            round
+                        >
+                            Olvidé mi contraseña
+                        </Button>
+                    </ListItem>
+                    <ListItem className={classes.listItem}>
+                        <Button
+                            component={Link}
                             to="/login"
                             className={classes.registerNavLink}
                             color="primary"
