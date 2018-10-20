@@ -3456,6 +3456,12 @@ table span.badge {
   padding-bottom: 1rem;
 }
 
+.section-green {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: #1de9b6
+}
+
 .section.no-pad {
   padding: 0;
 }
@@ -9047,4 +9053,28 @@ visibility 0s,
     text-align: center;
     margin-top: 1.2rem;
   }
+}
+
+.container-green {
+  background-color: #00acc1;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.step-foto img {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 5px 5px 5px ;
+}
+
+.container-green span {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+  color: white;
+  font-size: 40px;
+  font-weight: 200;
 }
