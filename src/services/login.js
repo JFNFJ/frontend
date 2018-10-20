@@ -1,19 +1,16 @@
-import { apiRoute } from "config/api";
 import { handleErrors } from "services/commons";
 
 function real_login(email, password) {
     const req = {
         method: 'POST',
-        body: {
+        body: JSON.stringify({
             name: email,
             password: password
-        }
+        })
     };
 
-    return fetch(apiRoute + 'login', req)
+    return fetch('/api/login', req)
         .then(handleErrors)
-        .then(response => response.json())
-        .then(_ => ({name: email}));
 }
 
 function emailUsername(emailAddress) {
@@ -24,7 +21,7 @@ function fake_login(email, password) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (email.includes("gmail")) {
-                resolve({ name: emailUsername(email)})
+                resolve({ name: emailUsername(email), token: 'a token'})
             } else {
                 reject('Invalid email')
             }

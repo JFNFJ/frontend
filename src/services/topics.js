@@ -1,4 +1,3 @@
-import { apiRoute } from "config/api";
 import { handleErrors } from "services/commons";
 
 const THREADS = 'threads';
@@ -17,7 +16,7 @@ function fake_db(){
 
 
 function nextTopicId(){
-    return Math.max(fake_db().map(topic => topic.id)) + 1;
+    return Math.max(...fake_db().map(topic => topic.id)) + 1;
 }
 
 function fake_getTopics() {
@@ -32,7 +31,8 @@ function real_getTopics() {
 
 function fake_getTopic(id) {
     return new Promise((resolve, _) => {
-        setTimeout(() => resolve(fake_db().find(t => t.id === id)), 800);
+        //eslint-disable-next-line
+        setTimeout(() => resolve(fake_db().find(t => t.id == id)), 800);
     });
 }
 
@@ -55,7 +55,7 @@ function fake_addTopic(newTopic) {
 }
 
 function real_addTopic(newTopic) {
-    return fetch(apiRoute + 'topics', {
+    return fetch('/api/topics', {
             method: 'POST',
             headers: {
                 token: localStorage.getItem('token')

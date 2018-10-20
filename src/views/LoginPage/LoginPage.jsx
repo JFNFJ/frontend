@@ -53,7 +53,7 @@ class LoginPage extends React.Component {
 
   notify(error){
     console.error(error);
-    this.setState({error: true, errorText: error});
+    this.setState({error: true, errorText: error.error});
     setTimeout(() => {
       this.setState({error: false});
     }, 6000);
@@ -62,7 +62,10 @@ class LoginPage extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     login(this.state.name, this.state.password)
-      .then((user) => localStorage.setItem('name', user.name))
+      .then((user) => {
+        localStorage.setItem('name', user.name)
+        localStorage.setItem('token', user.token)
+      })
       .then(() => this.props.history.push('/dashboard/new'))
       .catch(this.notify.bind(this));
   }
@@ -110,7 +113,8 @@ class LoginPage extends React.Component {
                             <InputAdornment position="end">
                               <People className={classes.inputIconsColor} />
                             </InputAdornment>
-                          )
+                          ),
+                          required: true
                         }}
                       />
                       <CustomInput
@@ -128,7 +132,8 @@ class LoginPage extends React.Component {
                                 lock_outline
                               </Icon>
                             </InputAdornment>
-                          )
+                          ),
+                          required: true
                         }}
                       />
                     </CardBody>
