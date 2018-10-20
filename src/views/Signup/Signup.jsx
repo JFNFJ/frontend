@@ -155,7 +155,8 @@ class Signup extends React.Component {
                               </Icon>
                             </InputAdornment>
                           ),
-                          required: true
+                          required: true,
+                          inputProps: { pattern: ".{8,35}" }
                         }}
                       />
                     </CardBody>
