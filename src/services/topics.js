@@ -3,7 +3,7 @@ import { handleErrors } from "services/commons";
 const THREADS = 'threads';
 
 export function Topic(id, term){
-    return { id: id, term: term, start: Date.now() };
+    return { id: id, name: term, start: Date.now() };
 }
 
 export function getTrendingTopics() {
@@ -26,7 +26,12 @@ function fake_getTopics() {
 }
 
 function real_getTopics() {
-    //TODO
+    return fetch('/api/topics', {
+            method: 'GET',
+            headers: {
+                token: localStorage.getItem('token')
+            }
+        }).then(handleErrors)
 }
 
 function fake_getTopic(id) {
@@ -37,7 +42,12 @@ function fake_getTopic(id) {
 }
 
 function real_getTopic(id) {
-    //TODO
+    return fetch('/api/topics/' + id + '/results', {
+            method: 'GET',
+            headers: {
+                token: localStorage.getItem('token')
+            }
+        }).then(handleErrors)
 }
 
 
@@ -60,7 +70,7 @@ function real_addTopic(newTopic) {
             headers: {
                 token: localStorage.getItem('token')
             },
-            body: newTopic
+            body: JSON.stringify(newTopic)
         }).then(handleErrors)
           .then(response => response.json())
 }

@@ -9,6 +9,8 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 
+import ClipLoader from 'react-spinners/ClipLoader';
+
 class Threads extends React.Component {
     constructor(props) {
         super(props)
@@ -25,9 +27,11 @@ class Threads extends React.Component {
 
     render(){
         if(this.state.loading){
-            return (<p>
-                Loading...
-            </p>)
+            return (<ClipLoader
+                sizeUnit={"px"}
+                size={150}
+                color={'#123abc'}
+              />);
         }
 
         const { classes, color } = this.props;
@@ -52,7 +56,7 @@ class Threads extends React.Component {
                                 <Explore />
                             </ListItemIcon>
                             <ListItemText
-                                primary={prop.term.name}
+                                primary={prop.name}
                                 className={classes.itemText + whiteFontClasses}
                                 disableTypography={true}
                             />
