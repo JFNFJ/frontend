@@ -5,6 +5,7 @@ import Person from "@material-ui/icons/Person";
 import LoginPage from "views/LoginPage/LoginPage"
 import Signup from "views/Signup/Signup";
 import Landing from "views/Landing/Landing"
+import ResetPassword from "views/ResetPassword/ResetPassword";
 
 
 const landingRoutes = [
@@ -21,6 +22,13 @@ const landingRoutes = [
     navbarName: "Signup",
     icon: Person,
     component: Signup
+  },
+  {
+    path: "/reset",
+    sidebarName: "Olvidé mi contraseña",
+    navbarName: "Olvidé mi contraseña",
+    icon: Person,
+    component: ResetPassword
   },
   {
     path: "/",
