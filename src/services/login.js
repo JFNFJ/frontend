@@ -11,8 +11,6 @@ function real_login(email, password) {
 
     return fetch('/api/login', req)
         .then(handleErrors)
-        .then(response => response.json())
-        .then(_ => ({name: email}));
 }
 
 function emailUsername(emailAddress) {
@@ -23,7 +21,7 @@ function fake_login(email, password) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             if (email.includes("gmail")) {
-                resolve({ name: emailUsername(email)})
+                resolve({ name: emailUsername(email), token: 'a token'})
             } else {
                 reject('Invalid email')
             }

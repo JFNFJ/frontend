@@ -6,6 +6,7 @@ import Icon from "@material-ui/core/Icon";
 // @material-ui/icons
 import Email from "@material-ui/icons/Email";
 import People from "@material-ui/icons/People";
+import Error from "@material-ui/icons/Error";
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
@@ -15,19 +16,33 @@ import CardBody from "components/Card/CardBody.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
+import Snackbar from "components/Snackbar/Snackbar.jsx";
 
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 
 import image from "assets/img/background2.jpg";
+import { signup } from "services/signup";
 
 class Signup extends React.Component {
   constructor(props) {
     super(props);
     // we use this to make the card to appear after the page has been rendered
     this.state = {
-      cardAnimaton: "cardHidden"
+      cardAnimaton: "cardHidden",
+      email: "",
+      password: "",
+      name: "",
+      error: false,
+      errorText: 'Oops'
     };
   }
+
+  handleChange(name, event) {
+    this.setState({
+      [name]: event.target.value,
+    });
+  }
+
   componentDidMount() {
     // we add a hidden class to the card and after 700 ms we delete it and the transition appears
     setTimeout(
@@ -38,31 +53,38 @@ class Signup extends React.Component {
     );
   }
 
-  signUp = function() {
-    fetch('/api/sign_up', {
-      method: 'POST',
-      body: JSON.stringify({
-          name: document.getElementById('first').value,
-          password: document.getElementById('pass').value,
-          email: document.getElementById('email').value
+  notify(error){
+    console.error(error);
+    this.setState({error: true, errorText: error.error});
+    setTimeout(() => {
+      this.setState({error: false});
+    }, 6000);
+  }
+
+  handleSignUp(event) {
+    event.preventDefault();
+    signup(this.state.name, this.state.email, this.state.password)
+      .then((user) => {
+        localStorage.setItem('name', user.name)
+        localStorage.setItem('token', user.token)
       })
-    }).then(((response) => {
-      if (response.status >= 200 && response.status < 300) {
-        response.json().then(body => {
-          localStorage.setItem('myUsername', body.name);
-          localStorage.setItem('token',body.token);
-          window.location.href="/dashboard";
-        });
-    } else {
-      // Validate user sign in with warning
-    }
-    }));
+      .then(() => this.props.history.push('/dashboard/new'))
+      .catch(this.notify.bind(this));
   }
 
   render() {
     const { classes } = this.props;
     return (
       <div>
+        <Snackbar
+          place="tc"
+          color="danger"
+          icon={Error}
+          message={this.state.errorText}
+          open={this.state.error}
+          closeNotification={() => this.setState({ error: false })}
+          close
+        />
         <div
           className={classes.pageHeader}
           style={{
@@ -75,7 +97,7 @@ class Signup extends React.Component {
             <GridContainer justify="center">
               <GridItem xs={12} sm={12} md={4}>
                 <Card className={classes[this.state.cardAnimaton]}>
-                  <form className={classes.form}>
+                  <form className={classes.form} onSubmit={this.handleSignUp.bind(this)}>
                     <CardHeader color="rose" className={classes.cardHeader}>
                       <h4>Sign Up</h4>
                     </CardHeader>
@@ -84,7 +106,9 @@ class Signup extends React.Component {
                         labelText="Nombre..."
                         id="first"
                         formControlProps={{
-                          fullWidth: true
+                          fullWidth: true,
+                          value: this.state.name,
+                          onChange: this.handleChange.bind(this, 'name')
                         }}
                         inputProps={{
                           type: "text",
@@ -92,14 +116,17 @@ class Signup extends React.Component {
                             <InputAdornment position="end">
                               <People className={classes.inputIconsColor} />
                             </InputAdornment>
-                          )
+                          ),
+                          required: true
                         }}
                       />
                       <CustomInput
                         labelText="Email..."
                         id="email"
                         formControlProps={{
-                          fullWidth: true
+                          fullWidth: true,
+                          value: this.state.email,
+                          onChange: this.handleChange.bind(this, 'email')
                         }}
                         inputProps={{
                           type: "email",
@@ -107,14 +134,17 @@ class Signup extends React.Component {
                             <InputAdornment position="end">
                               <Email className={classes.inputIconsColor} />
                             </InputAdornment>
-                          )
+                          ),
+                          required: true
                         }}
                       />
                       <CustomInput
                         labelText="Password"
                         id="pass"
                         formControlProps={{
-                          fullWidth: true
+                          fullWidth: true,
+                          value: this.state.password,
+                          onChange: this.handleChange.bind(this, 'password')
                         }}
                         inputProps={{
                           type: "password",
@@ -124,12 +154,13 @@ class Signup extends React.Component {
                                 lock_outline
                               </Icon>
                             </InputAdornment>
-                          )
+                          ),
+                          required: true
                         }}
                       />
                     </CardBody>
                     <CardFooter className={classes.cardFooter}>
-                      <Button onClick={this.signUp} simple color="primary" size="lg">
+                      <Button type="submit" simple color="primary" size="lg">
                         Registrarse!
                       </Button>
                     </CardFooter>
