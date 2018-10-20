@@ -5,6 +5,10 @@ import "assets/css/landing-materialize.css";
 import "assets/css/landing.css";
 
 import background1 from "assets/img/cat.jpeg";
+import firststep from 'assets/img/sign_in.jpg';
+import secondstep from 'assets/img/create.jpg';
+import thirdstep from 'assets/img/grafs.jpg';
+import { width } from "window-size";
 
 function Landing(props) {
     return (
@@ -58,12 +62,29 @@ function Landing(props) {
                 </div>
             </div>
 
+            <div className="container-green">
+                <span>Crea un usuario</span>
+                <div className="step-foto">
+                    <img src={firststep} style={{width: '600px' , height: '400px'}}></img>
+                </div>
+                <div className="step-foto">
+                    <img src={secondstep} style={{width: '600px' , height: '400px'}}></img>
+                </div>
+                <span>Eligue el termino a analizar</span>
+                <span>Visualiza los resultados</span>
+                <div className="step-foto">
+                    <img src={thirdstep} style={{width: '600px' , height: '400px'}}></img>
+                </div>
+            </div>
+
+
+
             <footer className="page-footer teal">
                 <div className="container">
                     <div className="row">
                         <div className="col l6 s12">
                             <h5 className="white-text">Company Bio</h5>
-                            <p className="grey-text text-lighten-4">Este es un proyecto de la UTN FRBA para la materia Proyecto Final por parte del grupo 202: Joaquin Azcarate, Nicolas Zarewsky, Federico Bonisconti, Fransico Bravo y Julieta Colombo</p>
+                            <p className="grey-text text-lighten-4">Este es un proyecto de la UTN FRBA para la materia Proyecto Final por parte del grupo 202: Joaquin Azcarate, Nicolas Zarewsky, Federico Bonisconti, Francisco Bravo y Julieta Colombo</p>
 
 
                         </div>
