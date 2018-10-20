@@ -1,4 +1,3 @@
-import { apiRoute } from "config/api";
 import { handleErrors } from "services/commons";
 
 const THREADS = 'threads';
@@ -56,7 +55,7 @@ function fake_addTopic(newTopic) {
 }
 
 function real_addTopic(newTopic) {
-    return fetch(apiRoute + 'topics', {
+    return fetch('/api/topics', {
             method: 'POST',
             headers: {
                 token: localStorage.getItem('token')

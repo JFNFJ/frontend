@@ -20,8 +20,6 @@ import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 
 import image from "assets/img/background2.jpg";
 
-import { apiRoute } from "config/api";
-
 class Signup extends React.Component {
   constructor(props) {
     super(props);
@@ -41,7 +39,7 @@ class Signup extends React.Component {
   }
 
   signUp = function() {
-    fetch(apiRoute + 'sign_up', {
+    fetch('/api/sign_up', {
       method: 'POST',
       body: JSON.stringify({
           name: document.getElementById('first').value,
