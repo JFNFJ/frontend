@@ -10,10 +10,9 @@ const addLabels = (data) => ({
 })
 
 const transform = (data) => {
-
   return {
-    labels: data.map(x => x.k),
-    series: transpose(data.map(x => x.v).map(Object.values)).map(addLabels)
+    labels: data.map(x => x.day),
+    series: transpose(data.map(x => [x.positive, x.negative, x.neutral])).map(addLabels)
   };
 }
 

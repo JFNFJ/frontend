@@ -1,13 +1,12 @@
 import React from 'react';
-import { toLabel } from './utils';
 import ChartistGraph from 'react-chartist';
 
 import './chart.css';
 
 const transform = (data) => {
   return {
-    labels: Object.keys(data),
-    series: Object.values(data)
+    labels: ["Positivo", "Negativo", "Neutral"],
+    series: [data.positive, data.negative, data.neutral]
   };
 }
 
@@ -19,7 +18,7 @@ export default ({data}) => {
     height: '300px',
     labelDirection: 'explode',
     labelInterpolationFnc: function(value) {
-      return toLabel(value);
+      return value;
     }
   };
 

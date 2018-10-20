@@ -55,10 +55,3 @@ export function getMapData(data, filter) {
         return { k: key, v: value }
     });
 }
-
-export function getDateData(data, filter) {
-    return Object.keys(data.AR).map((key) => {
-        const value = getData(data, { ...filter, day: key });
-        return { k: key, v: value }
-    });
-}

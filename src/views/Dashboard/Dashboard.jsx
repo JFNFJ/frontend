@@ -25,7 +25,7 @@ import moment from "moment";
 
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
 
-import { getDateData,getData, getMapData } from "models/dataFilters";
+import { getMapData } from "models/dataFilters";
 
 class Dashboard extends React.Component {
   state = {
@@ -38,9 +38,10 @@ class Dashboard extends React.Component {
 
   render() {
     const { topic, data, classes } = this.props;
-    const startDate = moment(topic.start);
+    const { generalResults, evolutionResults } = topic;
+    const total = generalResults.positive + generalResults.negative + generalResults.neutral;
+    const deadline = moment(topic.deadline);
 
-    debugger;
     return (
       <div>
         <h1>{topic.name}</h1>
@@ -53,30 +54,13 @@ class Dashboard extends React.Component {
                 </CardIcon>
                 <p className={classes.cardCategory}>Tweets procesados</p>
                 <h3 className={classes.cardTitle}>
-                  3 billones
+                  {total}
                 </h3>
               </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
-                  <Update />
-                  420 por minuto
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={4} md={4}>
-            <Card>
-              <CardHeader color="danger" stats icon>
-                <CardIcon color="danger">
-                  <Icon>info_outline</Icon>
-                </CardIcon>
-                <p className={classes.cardCategory}>Tweets descartados</p>
-                <h3 className={classes.cardTitle}>6.642</h3>
-              </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
                   <LocalOffer />
-                  0.3% del total
+                  {Math.floor(generalResults.neutral / total * 100) }% neutrales
                 </div>
               </CardFooter>
             </Card>
@@ -85,15 +69,26 @@ class Dashboard extends React.Component {
             <Card>
               <CardHeader color="info" stats icon>
                 <CardIcon color="info">
+                  <Icon>record_voice_over</Icon>
+                </CardIcon>
+                <p className={classes.cardCategory}>Idioma</p>
+                <h3 className={classes.cardTitle}>{topic.language}</h3>
+              </CardHeader>
+            </Card>
+          </GridItem>
+          <GridItem xs={12} sm={4} md={4}>
+            <Card>
+              <CardHeader color="danger" stats icon>
+                <CardIcon color="danger">
                   <DateRange />
                 </CardIcon>
-                <p className={classes.cardCategory}>Empezado el</p>
-                <h3 className={classes.cardTitle}>{startDate.format("MM/DD")}</h3>
+                <p className={classes.cardCategory}>Termina</p>
+                <h3 className={classes.cardTitle}>{deadline.format("MM/DD")}</h3>
               </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
                   <Update />
-                  {startDate.fromNow()}
+                  {deadline.fromNow()}
                 </div>
               </CardFooter>
             </Card>
@@ -103,7 +98,7 @@ class Dashboard extends React.Component {
           <GridItem xs={12} sm={12} md={12}>
             <Card chart>
               <CardHeader color="transparent">
-                <DateChart data={getDateData(data, this.state.filter)} />
+                <DateChart data={evolutionResults} />
               </CardHeader>
               <CardBody>
                 <h4 className={classes.cardTitle}>Tweets por día</h4>
@@ -133,7 +128,7 @@ class Dashboard extends React.Component {
           <GridItem xs={12} sm={12} md={6}>
             <Card chart>
               <CardHeader color="transparent">
-                <CakeChart data={getData(data, this.state.filter)} />
+                <CakeChart data={generalResults} />
               </CardHeader>
               <CardBody>
                 <h4 className={classes.cardTitle}>Overall</h4>
