@@ -37,8 +37,8 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    const { topic, data, classes } = this.props;
-    const { generalResults, evolutionResults } = topic;
+    const { result, data, classes } = this.props;
+    const { generalResults, evolutionResults, topic } = result;
     const total = generalResults.positive + generalResults.negative + generalResults.neutral;
     const deadline = moment(topic.deadline);
 
@@ -72,7 +72,7 @@ class Dashboard extends React.Component {
                   <Icon>record_voice_over</Icon>
                 </CardIcon>
                 <p className={classes.cardCategory}>Idioma</p>
-                <h3 className={classes.cardTitle}>{topic.language}</h3>
+                <h3 className={classes.cardTitle}>{topic.language === 'es' ? 'Español' : 'Ingles'}</h3>
               </CardHeader>
             </Card>
           </GridItem>

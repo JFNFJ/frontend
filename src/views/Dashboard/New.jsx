@@ -90,7 +90,9 @@ class New extends React.Component {
                                             inputProps={{
                                                 onChange: e => {
                                                     self.setState({ topic: e.target.value })
-                                                }
+                                                },
+                                                inputProps: { pattern: ".{1,15}" },
+                                                required: true
                                             }}
                                         />
                                     </GridItem>
@@ -121,6 +123,7 @@ class New extends React.Component {
                                             id="endDate"
                                             inputProps={{
                                                 type: "date",
+                                                required: true
                                             }}
                                             formControlProps={{
                                                 fullWidth: true,

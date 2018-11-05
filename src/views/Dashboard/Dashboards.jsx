@@ -36,7 +36,7 @@ class Dashboards extends React.Component {
     return (
       <div>
         <h1>{this.state.topic.name}</h1>
-        <Dashboard topic={this.state.topic} data={this.state.data} />
+        <Dashboard result={this.state.topic} data={this.state.data} />
       </div>
     );
   }
