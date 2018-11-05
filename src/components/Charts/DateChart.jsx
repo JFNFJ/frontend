@@ -3,7 +3,7 @@ import ChartistGraph from 'react-chartist';
 
 import './chart.css';
 
-const transpose = m => m[0].map((x,i) => m.map(x => x[i]));
+const transpose = m => (m[0] || []).map((x,i) => m.map(x => x[i]));
 const addLabels = (data) => ({
   name: 'My nice apples',
   data: data,

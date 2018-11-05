@@ -1,6 +1,9 @@
 import { successColor } from "assets/jss/material-dashboard-react.jsx";
 
 const dashboardStyle = {
+  capitalize: {
+      textTransform: "capitalize"
+  }, 
   successText: {
     color: successColor
   },

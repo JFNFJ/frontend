@@ -20,8 +20,10 @@ import CardFooter from "components/Card/CardFooter.jsx";
 import MapChart from "components/Charts/MapChart";
 import CakeChart from "components/Charts/CakeChart";
 import DateChart from "components/Charts/DateChart";
+import SourceChart from "components/Charts/SourceChart";
 
 import moment from "moment";
+import "moment/locale/es";
 
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
 
@@ -38,13 +40,13 @@ class Dashboard extends React.Component {
 
   render() {
     const { result, data, classes } = this.props;
-    const { generalResults, evolutionResults, topic } = result;
-    const total = generalResults.positive + generalResults.negative + generalResults.neutral;
-    const deadline = moment(topic.deadline);
+    const { generalResults, evolutionResults, topic, sourceResults } = result;
+    const total = (generalResults.positive + generalResults.negative + generalResults.neutral) || 0;
+    const deadline = moment(topic.deadline, "DD-MM-yyyy");
 
     return (
       <div>
-        <h1>{topic.name}</h1>
+        <h1 className={classes.capitalize}>{topic.name}</h1>
         <GridContainer>
           <GridItem xs={12} sm={4} md={4}>
             <Card>
@@ -94,6 +96,7 @@ class Dashboard extends React.Component {
             </Card>
           </GridItem>
         </GridContainer>
+
         <GridContainer>
           <GridItem xs={12} sm={12} md={12}>
             <Card chart>
@@ -132,6 +135,23 @@ class Dashboard extends React.Component {
               </CardHeader>
               <CardBody>
                 <h4 className={classes.cardTitle}>Overall</h4>
+              </CardBody>
+            </Card>
+          </GridItem>
+        </GridContainer>
+
+
+        <GridContainer>
+          <GridItem xs={12} sm={12} md={12}>
+            <Card chart>
+              <CardHeader color="warning">
+              <h4 className={classes.cardTitleWhite}>Fuente de Tweets</h4>
+                <p className={classes.cardCategoryWhite}>
+                  Solo mostramos el top 3
+                </p>
+              </CardHeader>
+              <CardBody>
+                <SourceChart data={sourceResults} />
               </CardBody>
             </Card>
           </GridItem>
