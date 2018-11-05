@@ -8,7 +8,6 @@ import background1 from "assets/img/cat.jpeg";
 import firststep from 'assets/img/sign_in.jpg';
 import secondstep from 'assets/img/create.jpg';
 import thirdstep from 'assets/img/grafs.jpg';
-import { width } from "window-size";
 
 function Landing(props) {
     return (
@@ -65,15 +64,15 @@ function Landing(props) {
             <div className="container-green">
                 <span>Crea un usuario</span>
                 <div className="step-foto">
-                    <img src={firststep} style={{width: '600px' , height: '400px'}}></img>
+                    <img src={firststep} style={{width: '600px' , height: '400px'}} alt="Primer paso"></img>
                 </div>
                 <div className="step-foto">
-                    <img src={secondstep} style={{width: '600px' , height: '400px'}}></img>
+                    <img src={secondstep} style={{width: '600px' , height: '400px'}} alt="Segundo paso"></img>
                 </div>
                 <span>Eligue el termino a analizar</span>
                 <span>Visualiza los resultados</span>
                 <div className="step-foto">
-                    <img src={thirdstep} style={{width: '600px' , height: '400px'}}></img>
+                    <img src={thirdstep} style={{width: '600px' , height: '400px'}} alt="Tercer paso"></img>
                 </div>
             </div>
 
