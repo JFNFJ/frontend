@@ -22,6 +22,8 @@ import CakeChart from "components/Charts/CakeChart";
 import DateChart from "components/Charts/DateChart";
 import SourceChart from "components/Charts/SourceChart";
 
+import AutoRefresh from "components/AutoRefresh/AutoRefresh";
+
 import moment from "moment";
 import "moment/locale/es";
 
@@ -44,7 +46,14 @@ class Dashboard extends React.Component {
 
     return (
       <div>
-        <h1 className={classes.capitalize}>{topic.name}</h1>
+        <GridContainer>
+          <GridItem xs={6} sm={4} md={4}>
+            <h1 className={classes.capitalize}>{topic.name}</h1>
+          </GridItem>
+          <GridItem xs={6} sm={4} md={4}>
+            <AutoRefresh refresh={this.props.refresh} />
+          </GridItem>
+        </GridContainer>
         <GridContainer>
           <GridItem xs={12} sm={4} md={4}>
             <Card>
