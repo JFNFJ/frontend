@@ -27,8 +27,6 @@ import "moment/locale/es";
 
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
 
-import { getMapData } from "models/dataFilters";
-
 class Dashboard extends React.Component {
   state = {
     filter: {
@@ -39,8 +37,8 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    const { result, data, classes } = this.props;
-    const { generalResults, evolutionResults, topic, sourceResults } = result;
+    const { result, classes } = this.props;
+    const { generalResults, evolutionResults, topic, sourceResults, locationResults } = result;
     const total = (generalResults.positive + generalResults.negative + generalResults.neutral) || 0;
     const deadline = moment(topic.deadline, "DD-MM-yyyy");
 
@@ -114,7 +112,7 @@ class Dashboard extends React.Component {
           <GridItem xs={12} sm={12} md={6}>
             <Card chart>
               <CardHeader color="transparent">
-                <MapChart data={getMapData(data, this.state.filter)} />
+                <MapChart data={locationResults} />
               </CardHeader>
               <CardBody>
                 <h4 className={classes.cardTitle}>Distribución geografica</h4>

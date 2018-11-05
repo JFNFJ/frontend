@@ -18,12 +18,13 @@ const tooltipStyle = (shown, x, y) => {
   return {
     display: shown ? 'block' : 'none',
     position: 'absolute',
-    top: y-60,
-    left: x+10,
+    top: y - 300,
+    left: x - 200,
     background: 'white',
     border: "1px solid black",
     padding: 3,
     borderRadius: 5,
+    zIndex: 100
   }
 }
 
@@ -32,7 +33,7 @@ const popScale = scaleLinear()
   .range(colors());
 
 const colorFor = (data) => {
-  return data.overall();
+  return (1* data.positive + (-1) * data.negative + 0 * data.neutral) / (data.positive + data.negative + data.neutral)
 }
 
 export default class MapChart extends Component {
@@ -51,15 +52,15 @@ export default class MapChart extends Component {
   }
 
   handleMove(geography, evt) {
-    const x = evt.clientX
-    const y = evt.clientY + window.pageYOffset
+    const x = evt.clientX;
+    const y = evt.clientY;
     
     this.setState({
       shown: true,
       x: x,
       y: y,
       location: geography.properties.name,
-      value: this.renderTooltip(this.props.data.find(x => x.k === geography.properties.wb_a2))
+      value: this.renderTooltip(this.props.data.find(x => x.location === geography.properties.wb_a2))
     });
   }
 
@@ -68,11 +69,12 @@ export default class MapChart extends Component {
   }
 
   style(loc) {
-    const data = this.props.data.find(x => x.k === loc)
+    const data = this.props.data.filter(dataPoint => dataPoint.positive + dataPoint.neutral + dataPoint.negative > 0).find(x => x.location === loc)
+
     if(data) {
       return {
         default: {
-          fill: popScale(colorFor(data.v)),
+          fill: popScale(colorFor(data)),
           stroke: "#607D8B",
           strokeWidth: 0.75,
           outline: "none",
@@ -81,7 +83,7 @@ export default class MapChart extends Component {
     } else {
       return {
         default: {
-          fill: "black",
+          fill: "transparent",
           stroke: "#607D8B",
           strokeWidth: 0.75,
           outline: "none",
