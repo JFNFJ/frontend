@@ -29,11 +29,11 @@ const tooltipStyle = (shown, x, y) => {
 }
 
 const popScale = scaleLinear()
-  .domain([1, 0, -1])
-  .range(colors());
+  .domain([-10, 0, +10])
+  .range(['red', 'white', 'green']);
 
 const colorFor = (data) => {
-  return (1* data.positive + (-1) * data.negative + 0 * data.neutral) / (data.positive + data.negative + data.neutral)
+  return (1* data.positive + (-1) * data.negative) / (data.positive + data.negative + 1) * 10;
 }
 
 export default class MapChart extends Component {
@@ -94,7 +94,12 @@ export default class MapChart extends Component {
   }
 
   renderTooltip(value){
-    return JSON.stringify(value);
+    if(value)
+      return `Positivo: ${value.positive} \n` + 
+            `Neutro: ${value.neutral} \n` + 
+            `Negativo: ${value.negative}`;
+    else
+      return "Sin datos";
   }
   
   render() {

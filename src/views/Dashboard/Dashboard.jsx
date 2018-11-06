@@ -27,6 +27,9 @@ import AutoRefresh from "components/AutoRefresh/AutoRefresh";
 import moment from "moment";
 import "moment/locale/es";
 
+import Odometer from 'react-odometerjs'
+import 'odometer/themes/odometer-theme-default.css';
+
 import dashboardStyle from "assets/jss/material-dashboard-react/views/dashboardStyle.jsx";
 
 class Dashboard extends React.Component {
@@ -63,7 +66,11 @@ class Dashboard extends React.Component {
                 </CardIcon>
                 <p className={classes.cardCategory}>Tweets procesados</p>
                 <h3 className={classes.cardTitle}>
-                  {total}
+                <Odometer
+                    format="d"
+                    duration={ 500 }
+                    value={total}
+                />
                 </h3>
               </CardHeader>
               <CardFooter stats>
