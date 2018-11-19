@@ -18,13 +18,14 @@ import CardBody from "components/Card/CardBody.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
+import ClipLoader from 'react-spinners/ClipLoader';
 
 import { getTrendingTopics, addTopic } from "services/topics";
 
+import moment from "moment";
+import "moment/locale/es";
 
 import trending from "assets/img/trending.png";
-
-const moment = require('moment');
 
 const styles = {
     cardCategoryWhite: {
@@ -51,18 +52,25 @@ class New extends React.Component {
         this.state = {
             topic: '',
             language: 'es',
-            endDate: null
+            endDate: null,
+            adding: false
         };
     }
 
     handleSubmit(event) {
         event.preventDefault();
+        debugger;
+        this.setState({ adding: true });
         addTopic({
-            name: this.state.topic,
-            deadline: moment(this.state.endDate).format('DD-MM-YYYY'),
-            language: this.state.language
-        })
-      .then((response) => this.props.history.push('/dashboard/topic/' + response.topicId))
+             name: this.state.topic,
+             deadline: moment(this.state.endDate).format('DD-MM-YYYY'),
+             language: this.state.language
+         })
+             .then((response) => this.props.history.push('/dashboard/topic/' + response.topicId));
+        setTimeout(() => {
+            this.setState({ adding: false });
+            window.location.reload();
+        }, 400);
     }
 
     render() {
@@ -105,7 +113,7 @@ class New extends React.Component {
                                             <Select
                                                 value={this.state.language}
                                                 onChange={e => {
-                                                    self.setState({language: e.target.value})
+                                                    self.setState({ language: e.target.value })
                                                 }}
                                                 inputProps={{
                                                     name: 'language',
@@ -135,7 +143,7 @@ class New extends React.Component {
                                 </GridContainer>
                             </CardBody>
                             <CardFooter>
-                                <Button type="submit" color="primary">Empezar a hilar</Button>
+                                {self.state.adding ? <ClipLoader sizeUnit={"px"} size={150} color={'#123abc'} /> : <Button type="submit" color="primary">Empezar a hilar</Button>}
                             </CardFooter>
                         </Card>
                     </GridItem>
@@ -153,7 +161,7 @@ class New extends React.Component {
                                         return (
                                             <ListItem className={classes.inlineBlock} key={key}>
                                                 <Link to={"/dashboard/" + term}
-                                                      className={classes.block}># {term}</Link>
+                                                    className={classes.block}># {term}</Link>
                                             </ListItem>
                                         );
                                     })}

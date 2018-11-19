@@ -6,7 +6,6 @@ import {
   Geography,
 } from "react-simple-maps"
 import { scaleLinear } from "d3-scale"
-import { colors } from './utils';
 
 const wrapperStyles = {
   width: "100%",
