@@ -65,11 +65,7 @@ class New extends React.Component {
              deadline: moment(this.state.endDate).format('DD-MM-YYYY'),
              language: this.state.language
          })
-             .then((response) => this.props.history.push('/dashboard/topic/' + response.topicId));
-        setTimeout(() => {
-            this.setState({ adding: false });
-            window.location.reload();
-        }, 400);
+        .then(response => setTimeout(() => window.location.assign('/dashboard/topic/' + response.id), 400));
     }
 
     render() {

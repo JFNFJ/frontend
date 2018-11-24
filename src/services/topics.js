@@ -72,7 +72,6 @@ function real_addTopic(newTopic) {
             },
             body: JSON.stringify(newTopic)
         }).then(handleErrors)
-          .then(response => response.json())
 }
 
 
