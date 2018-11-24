@@ -9068,7 +9068,7 @@ visibility 0s,
   box-shadow: 5px 5px 5px ;
 }
 
-.container-green span {
+.container-green span, .container-green div {
   display: flex;
   justify-content: center;
   flex-direction: column;
