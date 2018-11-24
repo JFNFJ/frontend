@@ -61,7 +61,6 @@ class ResetPassword extends React.Component {
     event.preventDefault();
     reset(this.state.email)
       .then((user) => {
-        debugger;
         localStorage.setItem('name', user.name)
         localStorage.setItem('token', user.token)
       })

@@ -59,7 +59,6 @@ class New extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        debugger;
         this.setState({ adding: true });
         addTopic({
              name: this.state.topic,
