@@ -8,11 +8,18 @@ import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Hidden from "@material-ui/core/Hidden";
 import Person from "@material-ui/icons/Person";
+import LogOut from "@material-ui/icons/PowerSettingsNew";
 // @material-ui/icons
 import Menu from "@material-ui/icons/Menu";
 import Button from "components/CustomButtons/Button.jsx";
 
 import headerStyle from "assets/jss/material-dashboard-react/components/headerStyle.jsx";
+
+function logout(){
+  localStorage.removeItem('name')
+  localStorage.removeItem('token')
+  window.location.replace('/');
+}
 
 function Header({ ...props }) {
   function makeBrand() {
@@ -41,6 +48,9 @@ function Header({ ...props }) {
         </div>
         <span>{userName}</span>
         <Person />
+        <Button onClick={logout} justIcon round color="transparent">
+          <LogOut />
+        </Button>
         <Hidden mdUp implementation="css">
           <IconButton
             color="inherit"
