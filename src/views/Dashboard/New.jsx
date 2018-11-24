@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // core components
@@ -16,11 +15,10 @@ import CardHeader from "components/Card/CardHeader.jsx";
 import CardAvatar from "components/Card/CardAvatar.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
-import ListItem from "@material-ui/core/ListItem";
-import List from "@material-ui/core/List";
+
 import ClipLoader from 'react-spinners/ClipLoader';
 
-import { getTrendingTopics, addTopic } from "services/topics";
+import { addTopic } from "services/topics";
 
 import moment from "moment";
 import "moment/locale/es";
@@ -151,16 +149,7 @@ class New extends React.Component {
                             </CardAvatar>
                             <CardBody profile>
                                 <h6 className={classes.cardCategory}>Trending Threads</h6>
-                                <List className={classes.list}>
-                                    {getTrendingTopics().map((term, key) => {
-                                        return (
-                                            <ListItem className={classes.inlineBlock} key={key}>
-                                                <Link to={"/dashboard/" + term}
-                                                    className={classes.block}># {term}</Link>
-                                            </ListItem>
-                                        );
-                                    })}
-                                </List>
+                                <iframe title="trending topics" src="https://trends24.in/argentina/~cloud" style={{width: '100%', height: '50vh'}} />
                             </CardBody>
                         </Card>
                     </GridItem>
