@@ -5,8 +5,6 @@ import FiberNew from "@material-ui/icons/FiberNew";
 import DashboardsPage from "views/Dashboard/DashboardRouter";
 import NewPage from "views/Dashboard/New.jsx";
 
-import { getTopics } from "services/topics";
-
 const dashboardRoutes = [
   {
     path: "/dashboard/new",
@@ -19,7 +17,6 @@ const dashboardRoutes = [
     path: "/dashboard/topic",
     sidebarName: "Threads",
     navbarName: "Opinion thread",
-    threads: getTopics(),
     icon: Dashboard,
     component: DashboardsPage
   },

@@ -22,6 +22,7 @@ const Sidebar = ({ ...props }) => {
     return props.location.pathname.indexOf(routeName) > -1 ? true : false;
   }
   const { classes, color, logo, image, logoText, routes } = props;
+
   var links = (
     <List className={classes.list}>
       {routes.map((prop, key) => {
@@ -63,7 +64,7 @@ const Sidebar = ({ ...props }) => {
                 />
               </ListItem>
             </NavLink>
-            {prop.threads ? <Threads threads={prop.threads} {...props}/> : <span />}
+            {prop.sidebarName === "Threads" ? <Threads {...props}/> : <span />}
           </span>
         );
       })}

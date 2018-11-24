@@ -11,6 +11,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 
 import ClipLoader from 'react-spinners/ClipLoader';
 
+import { getTopics } from "services/topics";
+
 class Threads extends React.Component {
     constructor(props) {
         super(props)
@@ -18,11 +20,14 @@ class Threads extends React.Component {
             loading: true,
             threads: [],
         };
-        props.threads.then(threads => this.setState({ loading: false, threads: threads }));
     }
 
     activeRoute(routeName) {
         return this.props.location.pathname.indexOf(routeName) > -1 ? true : false;
+    }
+
+    componentDidMount(){
+        getTopics().then(threads => this.setState({ loading: false, threads: threads }));
     }
 
     render(){
