@@ -91,7 +91,7 @@ function Landing(props) {
                 </div>
                 <div className="footer-copyright">
                     <div className="container">
-                        Made by <a className="brown-text text-lighten-3" href="https://github.com/JFNFJ">JFNFJ</a>
+                        Desarollado por <a className="brown-text text-lighten-3" href="https://github.com/JFNFJ">JFNFJ</a>
                     </div>
                 </div>
             </footer>

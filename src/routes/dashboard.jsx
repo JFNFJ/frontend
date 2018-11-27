@@ -8,8 +8,8 @@ import NewPage from "views/Dashboard/New.jsx";
 const dashboardRoutes = [
   {
     path: "/dashboard/new",
-    sidebarName: "New OpinionThread",
-    navbarName: "Crear un Opinion thread",
+    sidebarName: "Crear un Thread",
+    navbarName: "Crear un Opinion Thread",
     icon: FiberNew,
     component: NewPage
   },

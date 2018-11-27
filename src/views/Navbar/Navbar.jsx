@@ -51,7 +51,7 @@ function Navbar(props) {
                             color="primary"
                             round
                         >
-                            Log in
+                            Entrar
                         </Button>
                     </ListItem>
                     <ListItem className={classes.listItem}>
@@ -62,7 +62,7 @@ function Navbar(props) {
                             color="rose"
                             round
                         >
-                            Sign up
+                            Registrarse
                         </Button>
                     </ListItem>
                 </List>

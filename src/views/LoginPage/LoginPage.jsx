@@ -97,11 +97,11 @@ class LoginPage extends React.Component {
                 <Card className={classes[this.state.cardAnimaton]}>
                   <form className={classes.form} onSubmit={this.handleSubmit.bind(this)}>
                     <CardHeader color="primary" className={classes.cardHeader}>
-                      <h4>Login</h4>
+                      <h4>Iniciar sesión</h4>
                     </CardHeader>
                     <CardBody>
                       <CustomInput
-                        labelText="Nombre..."
+                        labelText="Nombre"
                         formControlProps={{
                           fullWidth: true,
                           value: this.state.name,
@@ -118,7 +118,7 @@ class LoginPage extends React.Component {
                         }}
                       />
                       <CustomInput
-                        labelText="Password"
+                        labelText="Contraseña"
                         formControlProps={{
                           fullWidth: true,
                           value: this.state.password,

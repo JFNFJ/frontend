@@ -99,11 +99,11 @@ class Signup extends React.Component {
                 <Card className={classes[this.state.cardAnimaton]}>
                   <form className={classes.form} onSubmit={this.handleSignUp.bind(this)}>
                     <CardHeader color="rose" className={classes.cardHeader}>
-                      <h4>Sign Up</h4>
+                      <h4>Registrarse</h4>
                     </CardHeader>
                     <CardBody>
                       <CustomInput
-                        labelText="Nombre..."
+                        labelText="Nombre"
                         id="first"
                         formControlProps={{
                           fullWidth: true,
@@ -121,7 +121,7 @@ class Signup extends React.Component {
                         }}
                       />
                       <CustomInput
-                        labelText="Email..."
+                        labelText="E-Mail"
                         id="email"
                         formControlProps={{
                           fullWidth: true,
@@ -139,7 +139,7 @@ class Signup extends React.Component {
                         }}
                       />
                       <CustomInput
-                        labelText="Password"
+                        labelText="Contraseña"
                         id="pass"
                         formControlProps={{
                           fullWidth: true,

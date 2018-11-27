@@ -16,12 +16,12 @@ function Footer({ ...props }) {
           <List className={classes.list}>
             <ListItem className={classes.inlineBlock}>
               <a href="/" className={classes.block}>
-                Home
+                Inicio
               </a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
               <a href="http://github.com/JFNFJ" className={classes.block}>
-                Company
+                Equipo
               </a>
             </ListItem>
           </List>
