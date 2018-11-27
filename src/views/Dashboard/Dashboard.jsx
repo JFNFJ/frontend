@@ -47,15 +47,22 @@ class Dashboard extends React.Component {
     const total = (generalResults.positive + generalResults.negative + generalResults.neutral) || 0;
     const deadline = moment(topic.deadline, "DD-MM-yyyy");
 
+    function Reload(props) {
+      if (deadline.isBefore(moment())) {
+        return (<em>Terminado</em>)
+      }
+      return (<GridItem xs={6} sm={4} md={4}>
+                <AutoRefresh refresh={props.refresh} />
+              </GridItem>);
+    }
+
     return (
       <div>
         <GridContainer>
           <GridItem xs={6} sm={4} md={4}>
             <h1 className={classes.capitalize}>{topic.name}</h1>
           </GridItem>
-          <GridItem xs={6} sm={4} md={4}>
-            <AutoRefresh refresh={this.props.refresh} />
-          </GridItem>
+          <Reload refresh={this.props.refresh}/>
         </GridContainer>
         <GridContainer>
           <GridItem xs={12} sm={4} md={4}>
@@ -98,7 +105,7 @@ class Dashboard extends React.Component {
                 <CardIcon color="danger">
                   <DateRange />
                 </CardIcon>
-                <p className={classes.cardCategory}>Termina</p>
+                <p className={classes.cardCategory}>Deadline</p>
                 <h3 className={classes.cardTitle}>{deadline.format("MM/DD")}</h3>
               </CardHeader>
               <CardFooter stats>
