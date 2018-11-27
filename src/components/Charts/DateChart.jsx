@@ -16,18 +16,25 @@ const transform = (data) => {
   };
 }
 
+const wrapperStyles = {
+  marginLeft: "30px",
+}
+
 export default ({data}) => {
   const lineData = transform(data);
 
   var options = {
     width: '100%',
-    height: '300px'
+    height: '300px',
+    axisY: {
+      onlyInteger: true 
+    }
   };
 
   var type = 'Line'
 
   return (
-    <div>
+    <div style={wrapperStyles}>
       <ChartistGraph data={lineData} options={options} type={type} />
     </div>
   );
