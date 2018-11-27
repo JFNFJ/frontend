@@ -5,10 +5,12 @@ import './chart.css';
 
 const transform = (data) => {
   return {
-    labels: ["Positivo", "Negativo", "Neutral"],
+    labels: ["+", "-", "~"],
     series: [data.positive, data.negative, data.neutral]
   };
 }
+
+const sum = (a, b) => a + b;
 
 export default ({data}) => {
   const pieData = transform(data);
@@ -16,9 +18,8 @@ export default ({data}) => {
   var options = {
     width: '300px',
     height: '300px',
-    labelDirection: 'explode',
     labelInterpolationFnc: function(value) {
-      return value;
+      return value + " " + Math.round(pieData.series[pieData.labels.indexOf(value)] / pieData.series.reduce(sum) * 100) + "%";
     }
   };
 
