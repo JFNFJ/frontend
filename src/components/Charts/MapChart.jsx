@@ -23,7 +23,8 @@ const tooltipStyle = (shown, x, y) => {
     border: "1px solid black",
     padding: 3,
     borderRadius: 5,
-    zIndex: 100
+    zIndex: 100,
+    whiteSpace: 'pre'
   }
 }
 
@@ -94,9 +95,9 @@ export default class MapChart extends Component {
 
   renderTooltip(value){
     if(value)
-      return `Positivo: ${value.positive} \n` + 
-            `Neutro: ${value.neutral} \n` + 
-            `Negativo: ${value.negative}`;
+      return `+\t${value.positive} \n` + 
+            `-\t${value.neutral} \n` + 
+            `~\t${value.negative}`;
     else
       return "Sin datos";
   }
@@ -105,7 +106,7 @@ export default class MapChart extends Component {
     return (
         <div style={wrapperStyles}>
           <div style={tooltipStyle(this.state.shown, this.state.x, this.state.y)}>
-            Loc: {this.state.location} <br />
+            <strong>{this.state.location}</strong> <br />
             {this.state.value}
           </div>
           <ComposableMap

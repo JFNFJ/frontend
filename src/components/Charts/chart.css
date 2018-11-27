@@ -35,3 +35,11 @@
 .ct-label {
   font-size: 20px;
 }
+
+.ct-horizontal{
+  position: relative;
+  transform: rotate(-45deg);
+  transform-origin: left top;
+  font-size: 16px;
+  margin-top: 22px;
+}

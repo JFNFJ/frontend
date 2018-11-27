@@ -11,7 +11,7 @@ const addLabels = (data) => ({
 
 const transform = (data) => {
   return {
-    labels: data.map(x => x.day),
+    labels: data.map(x => x.day.slice(0,5)),
     series: transpose(data.map(x => [x.positive, x.negative, x.neutral])).map(addLabels)
   };
 }
